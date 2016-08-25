@@ -3,13 +3,11 @@ var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 
 var ROOT_PATH = path.resolve(__dirname);
-var APP_PATH = path.resolve(ROOT_PATH, '');
+var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports= {
-  entry: {
-    app: path.resolve(APP_PATH, 'index.jsx')
-  },
+  entry: ['babel-polyfill', './src/index.jsx'],
   output: {
     path: BUILD_PATH,
     filename: 'bundle.js'

@@ -1,7 +1,7 @@
 import React,{Component} from 'react' ;
 import { createForm } from 'redux-form-utils';
 import formConfig from '../utils/config';
-@createForm(formConfig) ;
+@createForm(formConfig) 
 class Form extends Component {
   render(){
     const {clear,clearAll} = this.props ;
