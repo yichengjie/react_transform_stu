@@ -10,6 +10,7 @@ import Form from './components/Form';
 const finalCreateStore = compose(
   DevTools.instrument()
 )(createStore);
+
 const store = finalCreateStore(reducers);
 
 
