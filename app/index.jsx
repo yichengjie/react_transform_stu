@@ -7,11 +7,10 @@ class App extends React.Component{
         super();
     }
     render() {
-        //JSX here!
         return (
           <div className="container">
             <section className="jumbotron">
-              <h3 className="jumbotron-heading">Search Github Users</h3>
+              <h3 className="jumbotron-heading">Search Github Users </h3>
             </section>
           </div>
         )
