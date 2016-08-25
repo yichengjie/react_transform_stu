@@ -1,8 +1,15 @@
 import React,{Component} from 'react' ;
 import { createForm } from 'redux-form-utils';
 import formConfig from '../utils/config';
-@createForm(formConfig) 
+@createForm(formConfig)
 class Form extends Component {
+
+  handleChangeInput(event){
+    var value = event.target.value ;
+    console.info('value : ' + value) ;
+    //this.props.dispatch() ;
+  }
+
   render(){
     const {clear,clearAll} = this.props ;
     const {name,address,gender} = this.props.fields ;
