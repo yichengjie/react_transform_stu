@@ -1,18 +1,26 @@
 import React, {Component} from 'react';
 import {reduxForm} from 'redux-form';
 
+
+var onSubmit = (values, dispatch) => {
+    console.info('onSubmit is click ...',values) ;
+    return "success" ;
+};
+
+
 class ContactForm extends Component {
   render() {
     const {fields: {firstName, lastName, email}, handleSubmit} = this.props;
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label>First Name</label>
-          <input type="text" placeholder="First Name" {...firstName}/>
+          <input type="text" placeholder="First name" {...firstName} />
+          {firstName.touched && firstName.error && <span className="text-help">{firstName.error}</span>}
         </div>
         <div>
           <label>Last Name</label>
-          <input type="text" placeholder="Last Name" {...lastName}/>
+          <input type="text" placeholder="Last Name" {...lastName} autocomplete="off"/>
         </div>
         <div>
           <label>Email</label>
