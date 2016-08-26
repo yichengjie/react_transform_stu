@@ -1,63 +1,78 @@
-import React from 'react'
-import {Field,reduxForm} from 'redux-form'
-const  { DOM: { input, select, textarea } } = React
+import React, { Component, PropTypes, } from 'react';
+import { reduxForm, } from 'redux-form';
 
-const validation = (values) => {
-	let error = {}
-	if(!values.firstname) {
-		error.firstname = "This is a required Field"
-	}
-	return error
+import Dropzone from 'react-dropzone';
+
+const FILE_FIELD_NAME = 'files';
+
+export const fields = [FILE_FIELD_NAME,];
+
+@reduxForm({
+  form: 'simple',
+  fields,
+})
+export default class SimpleForm extends Component {
+
+  static propTypes = {
+    fields: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    resetForm: PropTypes.func.isRequired,
+  };
+
+  handleSubmit(data) {
+    var body = new FormData();
+    Object.keys(data).forEach(( key ) => {
+      body.append(key, data[ key ]);
+    });
+
+    console.info('POST', body, data);
+    console.info('This is expected to fail:');
+    fetch(`http://example.com/send/`, {
+      method: 'POST',
+      body: body,
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+  }
+
+  render() {
+    const {
+      fields,
+      handleSubmit,
+      resetForm,
+    } = this.props;
+    const files = fields[FILE_FIELD_NAME];
+    return (
+      <form onSubmit={ handleSubmit }>
+        <div>
+          <label>Files</label>
+          <div>
+            <Dropzone
+              onDrop={ ( filesToUpload, e ) => files.onChange(filesToUpload)}
+            >
+              <div>Try dropping some files here, or click to select files to upload.</div>
+            </Dropzone>
+            { files && Array.isArray(files.value) && (
+              <ul>
+                { files.value.map((file, i) => <li key={i}>{file.name}</li>) }
+              </ul>
+            ) }
+          </div>
+        </div>
+        <div>
+          <button
+            onClick={ handleSubmit(::this.handleSubmit) }
+          >
+            Submit
+          </button>
+          <button
+            onClick={ resetForm }
+          >
+            Clear Values
+          </button>
+        </div>
+      </form>
+    );
+  }
 }
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-/*
-const asyncValidate = (values) =>
-	new Promise((resolve,reject) => setTimeout( ()=> {
-		if(['devarsh','harsh','ayush','nirali'].includes(values.firstname)) {
-			reject({firstname:'name already taken'})
-		}
-		else
-		{
-			resolve()
-		}
-	},1000))
-*/
-var cnt=0
-const asyncValidate = (values) =>
-{
-	console.log('I am called outside submit',++cnt)
-	return sleep(1000).then(() => {
-		console.log('I am called inside submit',++cnt)
-		if(['devarsh','harsh','ayush','nirali'].includes(values.firstname)) {
-			throw {firstname:'name already taken'}
-		}
-	})
-}
-
-const MyComponent = asyncValidating => props => {
-
-	return (
-	<div>
-	<input {...props} />
-	{props.touched && props.error && <span>{props.error}</span>}
-	{asyncValidating === props.name && <span>Async Validating</span> }
-	</div>)
-}
-
-const SimpleForm = ({asyncValidating,handleSubmit,pristine, reset, submitting}) => {
-	return (
-		<form onSubmit={handleSubmit}>
-			<Field name="firstname" component={MyComponent(asyncValidating)} type="text" placeholder="Enter firstNamde"  />
-			<Field name="lastname" component={MyComponent(asyncValidating)} type="text" placeholder="Enter lastName"  />
-			<button type="submit" disabled={submitting}>Submit</button>
-		</form>
-	)
-}
-
-export default reduxForm({
-	form : 'SimpleForm',
-	validate : validation,
-	asyncValidate,
-  	asyncBlurFields:['firstname']
-})(SimpleForm)

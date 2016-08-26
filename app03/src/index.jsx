@@ -1,8 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider} from 'react-redux';
-import store  from './stores/FormStore.js' ;
-import App from './app.jsx' ;
+import ReactDOM,{ render, } from 'react-dom';
+import { createStore, combineReducers, } from 'redux';
+import { Provider, } from 'react-redux';
+import { reducer as formReducer, } from 'redux-form';
+import SimpleForm from './components/SimpleForm.jsx';
+
+const reducer = combineReducers({
+  form: formReducer,
+});
+
+function configureStore(initialState) {
+  return createStore(reducer, initialState);
+}
+
+const store = configureStore({});
 
 
 var el = document.createElement('div') ;
@@ -11,6 +22,6 @@ document.body.appendChild(el) ;
 
 ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <SimpleForm />
     </Provider>,
  document.getElementById('app'));
