@@ -1,10 +1,10 @@
 import React from 'react' ;
-import SubmitValidationForm from './components/SubmitValidationForm.jsx' ;
+import SimpleForm from './components/SimpleForm.jsx' ;
 
 var App = React.createClass({
     render() {
         return (
-            <SubmitValidationForm/>
+            <SimpleForm/>
         )
     }
 });
