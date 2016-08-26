@@ -1,11 +1,11 @@
 import React, { Component, PropTypes, } from 'react';
 import { reduxForm, } from 'redux-form';
-
 import Dropzone from 'react-dropzone';
-
 const FILE_FIELD_NAME = 'files';
-
 export const fields = [FILE_FIELD_NAME,];
+
+//文件上传demo
+
 
 @reduxForm({
   form: 'simple',
