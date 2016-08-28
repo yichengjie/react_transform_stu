@@ -13,5 +13,5 @@ el.id="app";
 document.body.appendChild(el) ;
 
 ReactDOM.render(
-  <Dynamic />,
+  <SimpleForm />,
   document.getElementById('app'));

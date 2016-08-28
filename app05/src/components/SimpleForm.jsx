@@ -13,7 +13,7 @@ class SimpleForm extends React.Component {
     this.props.form.validateFields((error, value) => {
       console.log(error, value);
       console.info('--------------------') ;
-      console.info(this.state) ;
+      console.info('this.state : ',this.state) ;
     });
   }
   handleInputChange = (e) =>{
@@ -27,10 +27,11 @@ class SimpleForm extends React.Component {
     return (<div>
       <input {...getFieldProps('normal',{
          initialValue: this.state.normal,
-         onChange:this.handleInputChange
+         onChange:this.handleInputChange,
+         hidden:true
       })} />
       <input {...getFieldProps('required', {
-        initialValue:'',
+        initialValue:'test',
         rules: [{required: true}],
       })}  />
       <div style={errorStyle}>
