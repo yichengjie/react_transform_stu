@@ -6,11 +6,12 @@ import ValidateFirst from './components/ValidateFirst.jsx' ;
 import AsyncInit from './components/AsyncInit.jsx' ;
 import DataBinding from './components/DataBinding.jsx' ;
 import DataBindingForm from './components/DataBindingForm.jsx' ;
+import Dynamic from './components/Dynamic.jsx' ;
 
 var el = document.createElement('div') ;
 el.id="app";
 document.body.appendChild(el) ;
 
 ReactDOM.render(
-  <DataBinding />,
+  <Dynamic />,
   document.getElementById('app'));
