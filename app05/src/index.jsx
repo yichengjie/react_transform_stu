@@ -12,5 +12,5 @@ el.id="app";
 document.body.appendChild(el) ;
 
 ReactDOM.render(
-  <AsyncInit />,
+  <SimpleForm />,
   document.getElementById('app'));
