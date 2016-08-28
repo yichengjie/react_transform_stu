@@ -27,9 +27,7 @@ class SimpleForm extends React.Component {
     let errors;
     const {getFieldProps, getFieldError} = this.props.form;
     return (<div>
-      <input {...getFieldProps('normal',{
-        onChange:this.handleChange
-      })} value={this.state.normal}/>
+      <input {...getFieldProps('normal')}/>
       <input {...getFieldProps('required', {
         rules: [{required: true}],
       })}  value ={this.state.required}/>

@@ -12,5 +12,5 @@ el.id="app";
 document.body.appendChild(el) ;
 
 ReactDOM.render(
-  <DataBding />,
+  <AsyncInit />,
   document.getElementById('app'));
