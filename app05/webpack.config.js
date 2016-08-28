@@ -19,13 +19,7 @@ module.exports= {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    progress: true,
-    proxy: {
-       '/ocguix/*': {
-           target: 'http://localhost:8080/',
-           secure: false
-       }
-    }
+    progress: true
   },
   resolve: {
       extensions: ['', '.js', '.jsx']
@@ -41,6 +35,10 @@ module.exports= {
       {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass']
+      },
+      {
+        test: /\.css$/,
+        loaders: ["style-loader", "css-loader"]
       }
     ]
   },

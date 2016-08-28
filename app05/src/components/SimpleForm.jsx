@@ -1,19 +1,42 @@
-import React, { Component, PropTypes, } from 'react';
+import React from 'react';
+import { createForm } from 'rc-form';
 
-export default class SimpleForm extends Component {
+@createForm()
+class SimpleForm extends React.Component {
+  constructor(props){
+    super(props) ;
+    this.state ={
+      normal:"hello world",
+      required:'test'
+    } ;
+  }
 
-  componentDidMount(){
-    var url = "/ocguix/validate/initPageData.action" ;
-    fetch(url).then(function(response) {
-      console.info(response) ;
-      return response.json();
-    }).then(function(data) {
-      console.log(data);
-    }).catch(function(e) {
-      console.log("Oops, error");
+  handleChange(value,t){
+    console.info(value,t) ;
+  }
+  // constructor() {
+  //     super();
+  // }
+  submit = () => {
+    this.props.form.validateFields((error, value) => {
+      console.log(error, value);
     });
   }
-  render(){
-    return (<div>hello world</div>) ;
+
+  render() {
+    let errors;
+    const {getFieldProps, getFieldError} = this.props.form;
+    return (<div>
+      <input {...getFieldProps('normal',{
+        onChange:this.handleChange
+      })} value={this.state.normal}/>
+      <input {...getFieldProps('required', {
+        rules: [{required: true}],
+      })}  value ={this.state.required}/>
+      {(errors = getFieldError('required')) ? errors.join(',') : null}
+      <button onClick={this.submit}>submit</button>
+    </div>)
   }
 }
+
+export default SimpleForm ;
