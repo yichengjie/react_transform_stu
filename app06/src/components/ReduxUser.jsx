@@ -23,7 +23,10 @@ const store = createStore(rootReducer, {
   user: {
     name: 'initial',
   },
-});
+},window.devToolsExtension && window.devToolsExtension());
+
+
+//let store = createStore(reducer, window.devToolsExtension && window.devToolsExtension());
 
 
 
