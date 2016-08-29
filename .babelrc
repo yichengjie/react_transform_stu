@@ -5,5 +5,5 @@
      "presets": ["react-hmre"]
    }
  },
- "plugins": ["transform-object-rest-spread","transform-decorators-legacy"]
+ "plugins": ["transform-object-rest-spread","transform-decorators-legacy",["antd", [{ "libraryName": "antd", "style": true }]]]
 }
