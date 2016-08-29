@@ -66,7 +66,7 @@ let BasicDemo = React.createClass({
     let target =event.target ;
     let name = target.name ;
     let value = target.value ;
-    let param = {[name]:value} ;
+    let param = {[name]:{value}} ;
     this.props.updateFieldValue(param) ;
   },
 
@@ -126,7 +126,7 @@ let BasicDemo = React.createClass({
         >
           <Input {...nameProps} placeholder="Real-tiem validation, try to input JasonWood"
             name ="name"
-            value ={this.props.formData.name} />
+            value ={this.props.formData.name.value} />
         </FormItem>
 
         <FormItem
@@ -173,6 +173,10 @@ let BasicDemo = React.createClass({
     );
   },
 });
+
+function mapPropsToFields(props){
+  return {formData:props.formData}
+}
 
 BasicDemo = createForm()(BasicDemo);
 

@@ -1,9 +1,13 @@
 import {UPDATE_FIELDVALUE,REST_ALLFILEDS} from '../actions/action.js' ;
 let initState = {
-  name:"yicj"
+  name:{
+    "value":"yicj say hello"
+  }
 } ;
 let orgState = {
-  name:"yicj"
+  name:{
+    "value":"yicj say hello"
+  }
 } ;
 
 export default function formData(state = initState, action) {
