@@ -28,36 +28,6 @@ let BasicDemo = React.createClass({
     });
   },
 
-  userExists(rule, value, callback) {
-    if (!value) {
-      callback();
-    } else {
-      setTimeout(() => {
-        if (value === 'JasonWood') {
-          callback([new Error('Sorry, the user name is already in use.')]);
-        } else {
-          callback();
-        }
-      }, 800);
-    }
-  },
-
-  checkPass(rule, value, callback) {
-    const { validateFields } = this.props.form;
-    if (value) {
-      validateFields(['rePasswd'], { force: true });
-    }
-    callback();
-  },
-
-  checkPass2(rule, value, callback) {
-    const { getFieldValue } = this.props.form;
-    if (value && value !== getFieldValue('passwd')) {
-      callback('The two passwords you enter is inconsistent!');
-    } else {
-      callback();
-    }
-  },
 
   // getInitialState: function() {
   //   return {name: "yicj"};
@@ -72,46 +42,8 @@ let BasicDemo = React.createClass({
 
   render() {
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.form;
-    const nameProps = getFieldProps('name', {
-      onChange:this.handleInputChange,
-      rules: [
-        { required: true, min: 5, message: 'User name for at least 5 characters' },
-        { validator: this.userExists },
-      ],
-    });
-    const emailProps = getFieldProps('email', {
-      validate: [{
-        rules: [
-          { required: true },
-        ],
-        trigger: 'onBlur',
-      }, {
-        rules: [
-          { type: 'email', message: 'Please input the correct email' },
-        ],
-        trigger: ['onBlur', 'onChange'],
-      }],
-    });
-    const passwdProps = getFieldProps('passwd', {
-      rules: [
-        { required: true, whitespace: true, message: 'Please enter your password' },
-        { validator: this.checkPass },
-      ],
-    });
-    const rePasswdProps = getFieldProps('rePasswd', {
-      rules: [{
-        required: true,
-        whitespace: true,
-        message: 'Please confirm your password',
-      }, {
-        validator: this.checkPass2,
-      }],
-    });
-    const textareaProps = getFieldProps('textarea', {
-      rules: [
-        { required: true, message: 'Really not supposed to write something?' },
-      ],
-    });
+    const insuranceProps = getFieldProps('insurance');
+    const propertyTaxProps = getFieldProps('propertyTax');
     const formItemLayout = {
       labelCol: { span: 7 },
       wrapperCol: { span: 12 },
@@ -120,48 +52,16 @@ let BasicDemo = React.createClass({
       <Form horizontal>
         <FormItem
           {...formItemLayout}
-          label="User name"
-          hasFeedback
-          help={isFieldValidating('name') ? 'validating...' : (getFieldError('name') || []).join(', ')}
+          label="Insurance"
         >
-          <Input {...nameProps} placeholder="Real-tiem validation, try to input JasonWood"
-            name ="name"
-            />
+          <Input {...insuranceProps} min={0} />
         </FormItem>
 
         <FormItem
           {...formItemLayout}
-          label="Email"
-          hasFeedback
+          label="Property Tax"
         >
-          <Input {...emailProps} type="email" placeholder="This control uses onBlur and onChange" />
-        </FormItem>
-
-        <FormItem
-          {...formItemLayout}
-          label="Password"
-          hasFeedback
-        >
-          <Input {...passwdProps} type="password" autoComplete="off"
-            onContextMenu={noop} onPaste={noop} onCopy={noop} onCut={noop}
-          />
-        </FormItem>
-
-        <FormItem
-          {...formItemLayout}
-          label="Confirm password"
-          hasFeedback
-        >
-          <Input {...rePasswdProps} type="password" autoComplete="off" placeholder="Two passwords that you enter must be consistent"
-            onContextMenu={noop} onPaste={noop} onCopy={noop} onCut={noop}
-          />
-        </FormItem>
-
-        <FormItem
-          {...formItemLayout}
-          label="remark"
-        >
-          <Input {...textareaProps} type="textarea" placeholder="Please write something" id="textarea" name="textarea" />
+          <Input {...propertyTaxProps} min={0} />
         </FormItem>
 
         <FormItem wrapperCol={{ span: 12, offset: 7 }}>
@@ -174,17 +74,15 @@ let BasicDemo = React.createClass({
   },
 });
 
-function onFieldsChange(props, field) {
-   //props.onFieldsChange(field);
-}
-function  mapPropsToFields(props) {
-   return props.fields;;
-}
 
-// function mapPropsToFields(props){
-//   return {formData:props.formData}
-// }
-
-BasicDemo = createForm(onFieldsChange,mapPropsToFields)(BasicDemo);
+BasicDemo = createForm(
+  function onFieldsChange(props, field) {
+     props.onFieldsChange(field);
+  },
+  function  mapPropsToFields(props) {
+    console.info(props.fields) ;
+     return props.fields;
+  }
+)(BasicDemo);
 
 export default BasicDemo ;

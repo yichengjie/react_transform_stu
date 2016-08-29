@@ -1,5 +1,7 @@
 
 import { combineReducers } from 'redux' ;
+let PROJECT_FIELDS_NAMES = ["insurance","propertyTax"] ;
+
 const toProjectFields = (project) => {
   const fields = {};
   PROJECT_FIELDS_NAMES.forEach((name) => {
@@ -31,7 +33,12 @@ const getNewFormState = (state, payload) => {
   };
 };
 
-const form = (state = {}, action) => {
+let initialState = {
+  insurance:"yicj",
+  propertyTax:"hello"
+} ;
+
+const form = (state = initialState, action) => {
   switch (action.type) {
     case 'PROJECT_FORM_CHANGE':
       return getNewFormState(state, action.payload);

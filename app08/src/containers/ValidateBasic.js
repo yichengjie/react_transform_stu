@@ -4,7 +4,7 @@ import {updateFieldValue,resetAllFileds} from  '../actions/action.js' ;
 
 let mapState2Props = (state,ownProp) =>{
   return {
-    formData:state.formData,
+    fields:state.form,
   } ;
 };
 let mapDispatch2Props = (dispatch,ownProp) => {
