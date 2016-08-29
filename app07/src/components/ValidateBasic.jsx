@@ -12,7 +12,8 @@ let BasicDemo = React.createClass({
   handleReset(e) {
     e.preventDefault();
     this.props.form.resetFields();
-    this.setState({"name":""}) ;
+    //this.setState({"name":""}) ;
+    this.props.resetAllFileds() ;
   },
 
   handleSubmit(e) {
@@ -58,14 +59,15 @@ let BasicDemo = React.createClass({
     }
   },
 
-  getInitialState: function() {
-    return {name: "yicj"};
-  },
+  // getInitialState: function() {
+  //   return {name: "yicj"};
+  // },
   handleInputChange (event) {
     let target =event.target ;
     let name = target.name ;
     let value = target.value ;
-    this.setState({[name]:value}) ;
+    let param = {[name]:value} ;
+    this.props.updateFieldValue(param) ;
   },
 
   render() {
@@ -124,7 +126,7 @@ let BasicDemo = React.createClass({
         >
           <Input {...nameProps} placeholder="Real-tiem validation, try to input JasonWood"
             name ="name"
-            value ={this.state.name} />
+            value ={this.props.formData.name} />
         </FormItem>
 
         <FormItem
