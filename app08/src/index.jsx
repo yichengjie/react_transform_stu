@@ -10,8 +10,9 @@ el.id="app";
 el.style.margin = "80px 0 0 50px" ;
 document.body.appendChild(el) ;
 
+
 ReactDOM.render(
     <Provider store={store}>
       <ValidateBasic />
     </Provider>,
- document.getElementById('app'));
+    document.getElementById('app'));

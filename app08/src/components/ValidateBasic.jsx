@@ -78,7 +78,6 @@ let BasicDemo = React.createClass({
         { required: true, min: 5, message: 'User name for at least 5 characters' },
         { validator: this.userExists },
       ],
-      initialValue: 0
     });
     const emailProps = getFieldProps('email', {
       validate: [{
@@ -127,7 +126,7 @@ let BasicDemo = React.createClass({
         >
           <Input {...nameProps} placeholder="Real-tiem validation, try to input JasonWood"
             name ="name"
-            value ={this.props.formData.name.value} />
+            />
         </FormItem>
 
         <FormItem
@@ -175,10 +174,17 @@ let BasicDemo = React.createClass({
   },
 });
 
-function mapPropsToFields(props){
-  return {formData:props.formData}
+function onFieldsChange(props, field) {
+   //props.onFieldsChange(field);
+}
+function  mapPropsToFields(props) {
+   return props.formData;
 }
 
-BasicDemo = createForm()(BasicDemo);
+// function mapPropsToFields(props){
+//   return {formData:props.formData}
+// }
+
+BasicDemo = createForm(onFieldsChange,mapPropsToFields)(BasicDemo);
 
 export default BasicDemo ;

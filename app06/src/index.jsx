@@ -9,7 +9,7 @@ import DateTimePicker from './components/DateTimePicker.jsx' ;
 
 var el = document.createElement('div') ;
 el.id="app";
-el.style = "margin:80px 0 0 50px" ;
+el.style.margin = "80px 0 0 50px" ;
 document.body.appendChild(el) ;
 
 
