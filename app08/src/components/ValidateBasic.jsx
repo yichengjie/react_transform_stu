@@ -178,7 +178,7 @@ function onFieldsChange(props, field) {
    //props.onFieldsChange(field);
 }
 function  mapPropsToFields(props) {
-   return props.formData;
+   return props.fields;;
 }
 
 // function mapPropsToFields(props){

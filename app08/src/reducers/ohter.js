@@ -1,4 +1,5 @@
 
+import { combineReducers } from 'redux' ;
 const toProjectFields = (project) => {
   const fields = {};
   PROJECT_FIELDS_NAMES.forEach((name) => {
@@ -22,7 +23,6 @@ const getNewFormState = (state, payload) => {
       return 0;
     })
     .reduce((x, y) => (add(x, y)));
-
   return {
     ...fields,
     totalInvestment: {
@@ -44,6 +44,5 @@ const form = (state = {}, action) => {
 };
 
 export default combineReducers({
-  all,
   form
 });
