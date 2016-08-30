@@ -1,5 +1,4 @@
 
-import { combineReducers } from 'redux' ;
 import {UPDATE_FIELDVALUE,FETCH_FIELDS_UPDATE} from '../constants/constant.js' ;
 let PROJECT_FIELDS_NAMES = ["insurance","propertyTax"] ;
 
@@ -40,6 +39,4 @@ const form = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({
-  form
-});
+export default form ;
