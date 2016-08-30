@@ -24,7 +24,7 @@ const getNewFormState = (state, payload) => {
 };
 
 let initialState = {
-  insurance:{value:"yicj"},
+  insurance:{value:"yicjtest"},
   propertyTax:{value:"hello"}
 } ;
 

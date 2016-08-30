@@ -42,7 +42,12 @@ let BasicDemo = React.createClass({
 
   render() {
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.form;
-    const insuranceProps = getFieldProps('insurance');
+    const insuranceProps = getFieldProps('insurance',{
+      rules: [
+        { required: true, min: 5, message: 'User name for at least 5 characters' },
+        { validator: this.userExists },
+      ],
+    });
     const propertyTaxProps = getFieldProps('propertyTax');
     const formItemLayout = {
       labelCol: { span: 7 },
@@ -53,6 +58,8 @@ let BasicDemo = React.createClass({
         <FormItem
           {...formItemLayout}
           label="Insurance"
+          hasFeedback
+          help={isFieldValidating('insurance') ? 'validating...' : (getFieldError('insurance') || []).join(', ')}
         >
           <Input {...insuranceProps} min={0} />
         </FormItem>
