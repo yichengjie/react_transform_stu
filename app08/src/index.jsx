@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ValidateBasic from './containers/ValidateBasic.js' ;
+import App from './app.jsx' ;
 //import znCH from 'antd/lib/locale-provider/en_US';
 import store from './stores/store.js' ;
 import {Provider} from 'react-redux' ;
@@ -13,6 +13,6 @@ document.body.appendChild(el) ;
 
 ReactDOM.render(
     <Provider store={store}>
-      <ValidateBasic />
+      <App />
     </Provider>,
     document.getElementById('app'));
