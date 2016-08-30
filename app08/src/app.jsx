@@ -19,8 +19,7 @@ export default class App extends Component {
     return (
       <div className = "container">
         <Row  gutter={16}>
-          <Col span={7}></Col>
-          <Col span={2}>
+          <Col span={2} offset={7}>
             <Button type="primary" onClick={this.handleSubmit}>保存</Button>
           </Col>
           <Col span={2}>
