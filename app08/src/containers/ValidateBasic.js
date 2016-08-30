@@ -5,6 +5,7 @@ import {updateFieldValue,fetchFieldsUpdate} from  '../actions/action.js' ;
 let mapState2Props = (state,ownProp) =>{
   return {
     fields:state.form,
+    subTableList:state.subTableList
   } ;
 };
 let mapDispatch2Props = (dispatch,ownProp) => {

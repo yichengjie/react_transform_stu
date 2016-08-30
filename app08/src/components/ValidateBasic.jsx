@@ -3,7 +3,7 @@ import { Button, Form, Input ,Row, Col,Table, Icon } from 'antd';
 const createForm = Form.create;
 const FormItem = Form.Item;
 import PubSub from 'pubsub-js' ;
-import {SUBMITFROM_EVENT} from '../constants/constant.js' ;
+import {SUBMITFROM_EVENT,RESETFROM_EVENT} from '../constants/constant.js' ;
 import autobind from 'autobind-decorator'
 
 
@@ -36,37 +36,24 @@ const columns = [{
   ),
 }];
 
-const data = [{
-  key: '1',
-  name: '胡彦斌',
-  age: 32,
-  address: '西湖区湖底公园1号',
-}, {
-  key: '2',
-  name: '胡彦祖',
-  age: 42,
-  address: '西湖区湖底公园1号',
-}, {
-  key: '3',
-  name: '李大嘴',
-  age: 32,
-  address: '西湖区湖底公园1号',
-}];
+
 
 function noop() {
   return false;
 }
 let token = null ;
+let resetToken = null ;
 //let BasicDemo = React.createClass({
 class BasicDemo extends Component {
   constructor(props) {
     super(props) ;
     //发布事件监听
     token = PubSub.subscribe( SUBMITFROM_EVENT, this.handleSubmit );
+    resetToken = PubSub.subscribe(RESETFROM_EVENT,this.handleReset)  ;
   }
   @autobind
   handleReset(e) {
-    e.preventDefault();
+    //e.preventDefault();
     this.props.form.resetFields();
   }
   @autobind
@@ -92,6 +79,7 @@ class BasicDemo extends Component {
   componentWillUnmount(){
     //销毁事件订阅
     PubSub.unsubscribe( token );
+    PubSub.unsubscribe(resetToken) ;
   }
 
   render() {
@@ -136,7 +124,7 @@ class BasicDemo extends Component {
           <Col>
               <Col span={7}></Col>
               <Col span={12}>
-                <Table columns={columns} dataSource={data} />
+                <Table columns={columns} dataSource={this.props.subTableList} />
               </Col>
           </Col>
         </Row>
