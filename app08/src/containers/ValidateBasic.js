@@ -13,7 +13,6 @@ let mapDispatch2Props = (dispatch,ownProp) => {
       dispatch(updateFieldValue(filed))
     },
     fetchFieldsUpdate:(project) => {
-      console.info('******************',project) ;
       dispatch(fetchFieldsUpdate(project)) ;
     }
   };
