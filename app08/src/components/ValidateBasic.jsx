@@ -127,12 +127,11 @@ class BasicDemo extends Component {
           <Input {...propertyTaxProps} min={0} />
         </FormItem>
 
-        <FormItem wrapperCol={{ span: 12, offset: 7 }}>
+        {/* <FormItem wrapperCol={{ span: 12, offset: 7 }}>
           <Button type="primary" onClick={this.handleSubmit}>OK</Button>
           &nbsp;&nbsp;&nbsp;
           <Button type="ghost" onClick={this.handleReset}>Reset</Button>
-        </FormItem>
-
+        </FormItem> */}
         <Row>
           <Col>
               <Col span={7}></Col>

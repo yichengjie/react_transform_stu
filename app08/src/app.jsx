@@ -17,7 +17,7 @@ export default class App extends Component {
       <div className = "container">
         <Row>
           <Col span={7}></Col>
-          <Col span={5}><Button type="primary" onClick={this.handleSubmit}>submit</Button></Col>
+          <Col span={5}><Button type="primary" onClick={this.handleSubmit}>保存</Button></Col>
         </Row>
         <br/>
         <ValidateBasic />
