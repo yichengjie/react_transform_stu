@@ -12,8 +12,6 @@ let BasicDemo = React.createClass({
   handleReset(e) {
     e.preventDefault();
     this.props.form.resetFields();
-    //this.setState({"name":""}) ;
-    //this.props.resetAllFileds() ;
   },
 
   handleSubmit(e) {
@@ -28,23 +26,12 @@ let BasicDemo = React.createClass({
     });
   },
 
-
-  // getInitialState: function() {
-  //   return {name: "yicj"};
-  // },
-  handleInputChange (event) {
-    let target =event.target ;
-    let name = target.name ;
-    let value = target.value ;
-    let param = {[name]:{value}} ;
-    this.props.updateFieldValue(param) ;
-  },
-
   render() {
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.form;
     const insuranceProps = getFieldProps('insurance',{
       rules: [
-        { required: true, min: 5, message: 'User name for at least 5 characters' },
+        { required: true, min: 5, message: '最小5个字符' },
+        { required: true, max: 6, message: '最多6个字符' },
         { validator: this.userExists },
       ],
     });
@@ -66,6 +53,7 @@ let BasicDemo = React.createClass({
 
         <FormItem
           {...formItemLayout}
+          hasFeedback
           label="Property Tax"
         >
           <Input {...propertyTaxProps} min={0} />
