@@ -1,0 +1,21 @@
+{
+  "name": "react_transform_stu",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "yicj"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "hot",
+    "load"
+  ],
+  "homepage": "https://github.com/yichengjie/react_transform_stu",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

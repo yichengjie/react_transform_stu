@@ -59,28 +59,38 @@ class BasicDemo extends Component {
   }
   @autobind
   handleSubmit(e) {
+    var jqFlag = this.jq_validator.form() ;
     //e.preventDefault();
     this.props.form.validateFields((errors, values) => {
       if (errors) {
         console.log('Errors in form!!!');
         return;
       }
-      console.log('Submit!!!');
-      console.log(values);
+      if(jqFlag){
+        console.log('Submit!!!');
+        console.log(values);
+      }else{
+        console.info('子表数据还有错误，请修改！') ;
+      }
     });
   }
   componentDidMount(){
-    setTimeout(function(){
-      this.props.fetchFieldsUpdate(
-        {"insurance":"hello world",propertyTax:"test"}
-      ) ;
-    }.bind(this),2000) ;
+    // setTimeout(function(){
+    //   this.props.fetchFieldsUpdate(
+    //     {"insurance":"hello world",propertyTax:"test"}
+    //   ) ;
+    // }.bind(this),2000) ;
+    //注册jquery validate框架
+    //对表单注册校验
+    var validator = $("#myForm").validate({meta:""});
+    this.jq_validator = validator ;
   }
 
   componentWillUnmount(){
     //销毁事件订阅
     PubSub.unsubscribe( token );
     PubSub.unsubscribe(resetToken) ;
+    this.jq_validator = null ;
   }
 
   render() {
@@ -98,7 +108,7 @@ class BasicDemo extends Component {
       wrapperCol: { span: 12 },
     };
     return (
-      <Form horizontal>
+      <Form horizontal id ="myForm">
         <FormItem
           {...formItemLayout}
           label="Insurance"
@@ -146,7 +156,7 @@ class BasicDemo extends Component {
                           </thead>
                           <tbody>
                              <tr>
-                              <td><Input type ="text"/></td>
+                              <td><Input type ="text" className="required"/></td>
                               <td><Input type ="text"/></td>
                               <td><Input type ="text"/></td>
                               <td><Input type ="text"/></td>

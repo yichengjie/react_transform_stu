@@ -49,6 +49,11 @@ module.exports= {
   plugins: [
     new HtmlwebpackPlugin({
       title: 'My first react app'
-    })
+    }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+          jQuery: "jquery",
+          "window.jQuery": "jquery"
+      }),
   ]
 }
