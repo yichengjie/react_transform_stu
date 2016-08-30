@@ -2,6 +2,7 @@ import React from 'react' ;
 import { Button, Form, Input } from 'antd';
 const createForm = Form.create;
 const FormItem = Form.Item;
+import PubSub from 'pubsub-js' ;
 
 function noop() {
   return false;
@@ -9,13 +10,15 @@ function noop() {
 
 let BasicDemo = React.createClass({
 
+
+
   handleReset(e) {
     e.preventDefault();
     this.props.form.resetFields();
   },
 
   handleSubmit(e) {
-    e.preventDefault();
+    //e.preventDefault();
     this.props.form.validateFields((errors, values) => {
       if (errors) {
         console.log('Errors in form!!!');
@@ -31,6 +34,7 @@ let BasicDemo = React.createClass({
         {"insurance":"hello world",propertyTax:"test"}
       ) ;
     }.bind(this),2000) ;
+    var token = PubSub.subscribe( 'MY TOPIC', this.handleSubmit );
   },
 
   render() {

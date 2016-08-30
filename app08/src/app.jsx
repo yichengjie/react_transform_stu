@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import ValidateBasic from './containers/ValidateBasic.js' ;
 import { Button,Row, Col} from 'antd';
+import PubSub from 'pubsub-js' ;
 
 export default class App extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ export default class App extends Component {
   }
   handleSubmit(e){
     console.info('提交表单') ;
+    PubSub.publish( 'MY TOPIC', 'hello world!' );
   }
   render(){
     return (
