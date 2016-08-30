@@ -1,10 +1,57 @@
 import React ,{Component}from 'react' ;
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input ,Row, Col,Table, Icon } from 'antd';
 const createForm = Form.create;
 const FormItem = Form.Item;
 import PubSub from 'pubsub-js' ;
 import {SUBMITFROM_EVENT} from '../constants/constant.js' ;
 import autobind from 'autobind-decorator'
+
+
+const columns = [{
+  title: '姓名',
+  dataIndex: 'name',
+  key: 'name',
+  render: (text) => <a href="#">{text}</a>,
+}, {
+  title: '年龄',
+  dataIndex: 'age',
+  key: 'age',
+}, {
+  title: '住址',
+  dataIndex: 'address',
+  key: 'address',
+}, {
+  title: '操作',
+  key: 'operation',
+  render: (text, record) => (
+    <span>
+      <a href="#">操作一{record.name}</a>
+      <span className="ant-divider" />
+      <a href="#">操作二</a>
+      <span className="ant-divider" />
+      <a href="#" className="ant-dropdown-link">
+        更多 <Icon type="down" />
+      </a>
+    </span>
+  ),
+}];
+
+const data = [{
+  key: '1',
+  name: '胡彦斌',
+  age: 32,
+  address: '西湖区湖底公园1号',
+}, {
+  key: '2',
+  name: '胡彦祖',
+  age: 42,
+  address: '西湖区湖底公园1号',
+}, {
+  key: '3',
+  name: '李大嘴',
+  age: 32,
+  address: '西湖区湖底公园1号',
+}];
 
 function noop() {
   return false;
@@ -85,6 +132,15 @@ class BasicDemo extends Component {
           &nbsp;&nbsp;&nbsp;
           <Button type="ghost" onClick={this.handleReset}>Reset</Button>
         </FormItem>
+
+        <Row>
+          <Col>
+              <Col span={7}></Col>
+              <Col span={12}>
+                <Table columns={columns} dataSource={data} />
+              </Col>
+          </Col>
+        </Row>
       </Form>
     );
   }
