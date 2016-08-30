@@ -13,7 +13,7 @@ let BasicDemo = React.createClass({
     e.preventDefault();
     this.props.form.resetFields();
     //this.setState({"name":""}) ;
-    this.props.resetAllFileds() ;
+    //this.props.resetAllFileds() ;
   },
 
   handleSubmit(e) {
@@ -74,15 +74,11 @@ let BasicDemo = React.createClass({
   },
 });
 
-
-BasicDemo = createForm(
-  function onFieldsChange(props, field) {
-     props.onFieldsChange(field);
-  },
-  function  mapPropsToFields(props) {
-    console.info(props.fields) ;
-     return props.fields;
-  }
-)(BasicDemo);
-
+function onFieldsChange(props, field) {
+   props.onFieldsChange(field);
+}
+function  mapPropsToFields(props) {
+   return props.fields;
+}
+BasicDemo = createForm({onFieldsChange,mapPropsToFields})(BasicDemo);
 export default BasicDemo ;

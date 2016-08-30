@@ -1,6 +1,6 @@
 import ValidateBasic from '../components/ValidateBasic.jsx' ;
 import {connect} from 'react-redux';
-import {updateFieldValue,resetAllFileds} from  '../actions/action.js' ;
+import {updateFieldValue} from  '../actions/action.js' ;
 
 let mapState2Props = (state,ownProp) =>{
   return {
@@ -9,8 +9,10 @@ let mapState2Props = (state,ownProp) =>{
 };
 let mapDispatch2Props = (dispatch,ownProp) => {
   return {
-    updateFieldValue:(param) => dispatch(updateFieldValue(param)),
-    resetAllFileds:()=> dispatch(resetAllFileds())
+    onFieldsChange:(filed) =>{
+      dispatch(updateFieldValue(filed))
+      //dispatch({type:'PROJECT_FORM_CHANGE',payload:filed}) ;
+    }
   };
 } ;
 
