@@ -1,6 +1,6 @@
 
 import { combineReducers } from 'redux' ;
-import {UPDATE_FIELDVALUE,FETCH_FIELDS_UPDATE} from '../actions/action.js' ;
+import {UPDATE_FIELDVALUE,FETCH_FIELDS_UPDATE} from '../constants/constant.js' ;
 let PROJECT_FIELDS_NAMES = ["insurance","propertyTax"] ;
 
 const toProjectFields = (project) => {

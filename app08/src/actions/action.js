@@ -1,5 +1,4 @@
-export const UPDATE_FIELDVALUE = "updateFieldValue" ;
-export const FETCH_FIELDS_UPDATE = "fetchFieldsUpdate" ;
+import {UPDATE_FIELDVALUE,FETCH_FIELDS_UPDATE} from '../constants/constant.js' ;
 
 export function updateFieldValue(param){
     return {type:UPDATE_FIELDVALUE,param} ;

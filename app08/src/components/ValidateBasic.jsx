@@ -1,22 +1,28 @@
-import React from 'react' ;
+import React ,{Component}from 'react' ;
 import { Button, Form, Input } from 'antd';
 const createForm = Form.create;
 const FormItem = Form.Item;
 import PubSub from 'pubsub-js' ;
+import {SUBMITFROM_EVENT} from '../constants/constant.js' ;
+import autobind from 'autobind-decorator'
 
 function noop() {
   return false;
 }
-
-let BasicDemo = React.createClass({
-
-
-
+let token = null ;
+//let BasicDemo = React.createClass({
+class BasicDemo extends Component {
+  constructor(props) {
+    super(props) ;
+    //发布事件监听
+    token = PubSub.subscribe( SUBMITFROM_EVENT, this.handleSubmit );
+  }
+  @autobind
   handleReset(e) {
     e.preventDefault();
     this.props.form.resetFields();
-  },
-
+  }
+  @autobind
   handleSubmit(e) {
     //e.preventDefault();
     this.props.form.validateFields((errors, values) => {
@@ -27,15 +33,19 @@ let BasicDemo = React.createClass({
       console.log('Submit!!!');
       console.log(values);
     });
-  },
+  }
   componentDidMount(){
     setTimeout(function(){
       this.props.fetchFieldsUpdate(
         {"insurance":"hello world",propertyTax:"test"}
       ) ;
     }.bind(this),2000) ;
-    var token = PubSub.subscribe( 'MY TOPIC', this.handleSubmit );
-  },
+  }
+
+  componentWillUnmount(){
+    //销毁事件订阅
+    PubSub.unsubscribe( token );
+  }
 
   render() {
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.form;
@@ -77,9 +87,9 @@ let BasicDemo = React.createClass({
         </FormItem>
       </Form>
     );
-  },
-});
-
+  }
+}
+//});
 function onFieldsChange(props, field) {
    props.onFieldsChange(field);
 }
