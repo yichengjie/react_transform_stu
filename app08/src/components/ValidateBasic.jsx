@@ -25,6 +25,13 @@ let BasicDemo = React.createClass({
       console.log(values);
     });
   },
+  componentDidMount(){
+    setTimeout(function(){
+      this.props.fetchFieldsUpdate(
+        {"insurance":"hello world",propertyTax:"test"}
+      ) ;
+    }.bind(this),2000) ;
+  },
 
   render() {
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.form;

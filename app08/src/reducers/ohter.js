@@ -1,6 +1,6 @@
 
 import { combineReducers } from 'redux' ;
-import {UPDATE_FIELDVALUE} from '../actions/action.js' ;
+import {UPDATE_FIELDVALUE,FETCH_FIELDS_UPDATE} from '../actions/action.js' ;
 let PROJECT_FIELDS_NAMES = ["insurance","propertyTax"] ;
 
 const toProjectFields = (project) => {
@@ -13,10 +13,10 @@ const toProjectFields = (project) => {
   return fields;
 };
 
-const getNewFormState = (state, payload) => {
+const getNewFormState = (state, field) => {
   const fields = {
     ...state,
-    ...payload
+    ...field
   };
   return {
     ...fields
@@ -24,7 +24,7 @@ const getNewFormState = (state, payload) => {
 };
 
 let initialState = {
-  insurance:{value:"yicj test"},
+  insurance:{value:"yicj"},
   propertyTax:{value:"hello"}
 } ;
 
@@ -32,8 +32,8 @@ const form = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_FIELDVALUE:
       return getNewFormState(state, action.param);
-    case 'FETCH_PROJECT_SUCCESS':
-      const fields = toProjectFields(action.payload);
+    case FETCH_FIELDS_UPDATE:
+      const fields = toProjectFields(action.param);
       return getNewFormState(state, fields);
     default:
       return state;
