@@ -1,22 +1,9 @@
-import 'bootstrap/scss/bootstrap.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import HelloWorld from './components/HelloWorld.jsx' ;
 
-class App extends React.Component{
-    constructor() {
-        super();
-    }
-    render() {
-        return (
-          <div className="container">
-            <section className="jumbotron">
-              <h3 className="jumbotron-heading">Search Github Users </h3>
-            </section>
-          </div>
-        )
-    }
-};
-
-const app = document.createElement('div');
-document.body.appendChild(app);
-ReactDOM.render(<App />, app);
+let el = document.createElement('div');
+el.id="app";
+el.style.margin = "50px 0 0 50px" ;
+document.body.appendChild(el);
+ReactDOM.render(<HelloWorld />, el);
