@@ -7,7 +7,10 @@ var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports= {
-  entry: ['babel-polyfill', './src/index.jsx'],
+  entry:{
+    index:['babel-polyfill','./src/index.jsx'],
+    vendor:["react", "react-dom", "redux", "react-redux","antd"]
+  },
   output: {
     path: BUILD_PATH,
     filename: 'bundle.js'
@@ -54,6 +57,13 @@ module.exports= {
       $: "jquery",
           jQuery: "jquery",
           "window.jQuery": "jquery"
-      }),
+    }),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),/*,
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify( options.dev ? 'development' : 'production' )
+      },
+      "__SERVER__": isServer ? true : false
+    })*/
   ]
 }
