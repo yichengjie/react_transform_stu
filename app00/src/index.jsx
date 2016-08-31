@@ -9,6 +9,11 @@ import ModalFootCustomEdit from './components/ModalFootCustomEdit.jsx' ;
 import ModalConfirm from './components/ModalConfirm.jsx' ;
 import ModalConfirmPromise from './components/ModalConfirmPromise.jsx' ;
 import ModalInfoTip from './components/ModalInfoTip.jsx' ;
+import NotificationBasic from './components/NotificationBasic.jsx' ;
+import NotificationCustomEdit from './components/NotificationCustomEdit.jsx' ;
+import PopconfirmBasic from './components/PopconfirmBasic.jsx' ;
+import PopconfirmLocation from './components/PopconfirmLocation.jsx' ;
+
 //ModalSync01
 
 let mountNode = document.createElement('div');
@@ -25,6 +30,10 @@ ReactDOM.render(
       <ModalConfirm/><br/>
       <ModalConfirmPromise/>
       <ModalInfoTip/>
+      <NotificationBasic/>
+      <NotificationCustomEdit/>
+      <PopconfirmBasic/>
+      <PopconfirmLocation/>
     </div>
   </div>
   , mountNode);
