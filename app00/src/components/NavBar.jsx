@@ -22,23 +22,18 @@ const App = React.createClass({
         mode="horizontal"
       >
         <Menu.Item key="mail">
-          <Icon type="mail" />导航一
+          <Icon type="home" />OCGUI
         </Menu.Item>
         <Menu.Item key="app" disabled>
-          <Icon type="appstore" />导航二
+          <Icon type="appstore" />附加服务
         </Menu.Item>
-        <SubMenu title={<span><Icon type="setting" />导航 - 子菜单</span>}>
-          <MenuItemGroup title="分组1">
-            <Menu.Item key="setting:1">选项1</Menu.Item>
-            <Menu.Item key="setting:2">选项2</Menu.Item>
-          </MenuItemGroup>
-          <MenuItemGroup title="分组2">
-            <Menu.Item key="setting:3">选项3</Menu.Item>
-            <Menu.Item key="setting:4">选项4</Menu.Item>
-          </MenuItemGroup>
+        <SubMenu title={<span><Icon type="setting" />导航--基础数据</span>}>
+          <Menu.Item key="setting:1">数据源配置</Menu.Item>
+          <Menu.Item key="setting:2">里程积分兑换</Menu.Item>
+          <Menu.Item key="setting:3">附加服务配置</Menu.Item>
         </SubMenu>
         <Menu.Item key="alipay">
-          <a href="http://www.alipay.com/" target="_blank">导航四 - 链接</a>
+          <a href="http://www.alipay.com/" target="_blank">运价验证</a>
         </Menu.Item>
       </Menu>
     );
