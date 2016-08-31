@@ -1,3 +1,4 @@
+"use strict"
 var path = require('path');
 var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
@@ -6,10 +7,21 @@ var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
+const vendors = [
+  'antd',
+  'react',
+  'react-dom',
+  'react-redux',
+  'redux',
+  'pubsub-js',
+  'autobind-decorator'
+];
+
+
 module.exports= {
   entry:{
     index:['babel-polyfill','./src/index.jsx'],
-    // vendor:["react", "react-dom", "redux", "react-redux","antd"]
+    //vendor:vendors
   },
   output: {
     path: BUILD_PATH,
