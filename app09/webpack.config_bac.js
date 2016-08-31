@@ -9,7 +9,7 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 module.exports= {
   entry:{
     index:['babel-polyfill','./src/index.jsx'],
-    // vendor:["react", "react-dom", "redux", "react-redux","antd"]
+    vendor:["react", "react-dom", "redux", "react-redux","antd"]
   },
   output: {
     path: BUILD_PATH,
@@ -58,12 +58,12 @@ module.exports= {
           jQuery: "jquery",
           "window.jQuery": "jquery"
     }),
-    //new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.DllReferencePlugin({
       context:__dirname,
       manifest: require( './build/dll/vendor-manifest.json' )
-    }),
-    /*new webpack.DefinePlugin({
+    })/*,
+    new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify( options.dev ? 'development' : 'production' )
       },

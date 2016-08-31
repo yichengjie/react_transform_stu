@@ -1,4 +1,4 @@
-"use strict" 
+"use strict"
 let path = require('path');
 let webpack = require('webpack');
 
@@ -7,7 +7,9 @@ const vendors = [
   'react',
   'react-dom',
   'react-redux',
-  'redux'
+  'redux',
+  'pubsub-js',
+  'autobind-decorator'
 ];
 
 module.exports = {
