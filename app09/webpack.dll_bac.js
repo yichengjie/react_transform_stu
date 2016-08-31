@@ -1,4 +1,5 @@
-const webpack = require('webpack');
+let path = require('path');
+let webpack = require('webpack');
 
 const vendors = [
   'antd',
@@ -10,7 +11,7 @@ const vendors = [
 
 module.exports = {
   output: {
-    path: 'build',
+    path: 'build/dll',
     filename: '[name].[chunkhash].js',
     library: '[name]_[chunkhash]',
   },

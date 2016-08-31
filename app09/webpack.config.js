@@ -58,7 +58,11 @@ module.exports= {
           jQuery: "jquery",
           "window.jQuery": "jquery"
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),/*,
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
+    new webpack.DllReferencePlugin({
+      context:__dirname,
+      manifest: require( './build/dll/vendor-manifest.json' )
+    })/*,
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify( options.dev ? 'development' : 'production' )
