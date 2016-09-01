@@ -3,6 +3,7 @@ let path = require('path');
 let webpack = require('webpack');
 
 const vendors = [
+  'babel-polyfill',
   'antd',
   'react',
   'react-dom',

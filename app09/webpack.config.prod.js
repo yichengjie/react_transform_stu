@@ -10,7 +10,7 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports= {
   entry:{
-    index:['babel-polyfill','./src/index.jsx']
+    index:['./src/index.jsx']
   },
   output: {
     path: BUILD_PATH,
