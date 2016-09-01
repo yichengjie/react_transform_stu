@@ -7,21 +7,10 @@ var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
-const vendors = [
-  'antd',
-  'react',
-  'react-dom',
-  'react-redux',
-  'redux',
-  'pubsub-js',
-  'autobind-decorator'
-];
-
 
 module.exports= {
   entry:{
-    index:['babel-polyfill','./src/index.jsx'],
-    //vendor:vendors
+    index:['babel-polyfill','./src/index.jsx']
   },
   output: {
     path: BUILD_PATH,
@@ -71,7 +60,6 @@ module.exports= {
           jQuery: "jquery",
           "window.jQuery": "jquery"
     }),
-    //new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.DllReferencePlugin({
       context:__dirname,
       manifest: require( './build/dll/vendor-manifest.json' )

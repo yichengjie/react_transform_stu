@@ -1,3 +1,5 @@
+"use strict"
+//使用CommonsChunkPlugin插件提取公共部分加快打包速度
 var path = require('path');
 var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
@@ -6,10 +8,21 @@ var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
+const vendors = [
+  'antd',
+  'react',
+  'react-dom',
+  'react-redux',
+  'redux',
+  'pubsub-js',
+  'autobind-decorator'
+];
+
+
 module.exports= {
   entry:{
     index:['babel-polyfill','./src/index.jsx'],
-    vendor:["react", "react-dom", "redux", "react-redux","antd"]
+    vendor:vendors
   },
   output: {
     path: BUILD_PATH,
@@ -51,7 +64,8 @@ module.exports= {
   },
   plugins: [
     new HtmlwebpackPlugin({
-      title: 'My first react app'
+      filename: 'index.html',
+      template: './src/template/index.html'
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
@@ -59,11 +73,7 @@ module.exports= {
           "window.jQuery": "jquery"
     }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
-    new webpack.DllReferencePlugin({
-      context:__dirname,
-      manifest: require( './build/dll/vendor-manifest.json' )
-    })/*,
-    new webpack.DefinePlugin({
+    /*new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify( options.dev ? 'development' : 'production' )
       },
