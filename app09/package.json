@@ -4,7 +4,7 @@
   "description": "test",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --progress --profile --colors --hot --port 3000",
+    "dev": "webpack-dev-server --config webpack.config.dev.js --progress --profile --colors --hot --port 3000",
     "build": "webpack --progress --profile --colors",
     "test": "karma start"
   }
