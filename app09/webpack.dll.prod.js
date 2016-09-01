@@ -27,25 +27,23 @@ module.exports = {
     vendor: vendors,
   },
   plugins: [
-    //new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    // new webpack.DllPlugin({
-    //   path: 'manifest.json',
-    //   name: '[name]_[chunkhash]',
-    //   context: __dirname,
-    // }),
-    new webpack.DllPlugin({
-      path:path.resolve( __dirname, './build/dll/[name]-manifest.json'),
-      name:"[name]"
-   }),
-   new webpack.optimize.UglifyJsPlugin({
+    new webpack.optimize.UglifyJsPlugin({
        compress: {
            warnings: false
        },
-   }),
+       output: {
+         comments: false,
+       },
+    }),
+    new webpack.DllPlugin({
+      path:path.resolve( __dirname, './build/dll/[name]-manifest.json'),
+      name:"[name]"
+    }),
   ],
 };
