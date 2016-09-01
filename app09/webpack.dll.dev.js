@@ -9,7 +9,8 @@ const vendors = [
   'react-redux',
   'redux',
   'pubsub-js',
-  'autobind-decorator'
+  'autobind-decorator',
+  'jquery'
 ];
 
 module.exports = {
