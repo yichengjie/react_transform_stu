@@ -13,6 +13,11 @@ const vendors = [
 ];
 
 module.exports = {
+  // output: {
+  //   path: 'build/dll',
+  //   filename: '[name].[chunkhash].js',
+  //   library: '[name]_[chunkhash]',
+  // },
   output:{
     filename:'[name].dll.js',
     path:path.resolve( __dirname, './build/dll' ),
@@ -22,6 +27,11 @@ module.exports = {
     vendor: vendors,
   },
   plugins: [
+    // new webpack.DllPlugin({
+    //   path: 'manifest.json',
+    //   name: '[name]_[chunkhash]',
+    //   context: __dirname,
+    // }),
     new webpack.DllPlugin({
      path:path.resolve( __dirname, './build/dll/[name]-manifest.json'),
      name:"[name]"
