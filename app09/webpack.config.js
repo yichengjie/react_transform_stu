@@ -63,7 +63,8 @@ module.exports= {
   },
   plugins: [
     new HtmlwebpackPlugin({
-      title: 'My first react app'
+      filename: 'index.html',
+      template: './src/template/index.html'
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
