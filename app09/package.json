@@ -6,7 +6,8 @@
   "scripts": {
     "dll_dev":"webpack --config webpack.dll.dev.js --progress --colors",
     "dll_prod":"webpack --config webpack.dll.prod.js --progress --colors",
-    "prod":"webpack --config webpack.config.prod.js --progress --profile --colors",
+    "build_dev":"webpack --config webpack.config.dev.js --progress --profile --colors",
+    "build_prod":"webpack --config webpack.config.prod.js --progress --profile --colors",
     "dev": "webpack-dev-server --config webpack.config.dev.js --progress --profile --colors --hot --port 3000",
     "test": "karma start"
   }
