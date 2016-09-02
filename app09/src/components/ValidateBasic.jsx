@@ -6,6 +6,7 @@ import PubSub from 'pubsub-js' ;
 import {SUBMITFROM_EVENT,RESETFROM_EVENT} from '../constants/constant.js' ;
 import autobind from 'autobind-decorator' ;
 import './table.css' ;
+import Table196 from './Table196.jsx' ;
 
 
 const columns = [{
@@ -144,26 +145,7 @@ class BasicDemo extends Component {
           <Col>
               <Col span={7}></Col>
               <Col span={12}>
-                  <div className="table_layout"  style={{width:"500px"}}>
-                      <table>
-                          <thead>
-                            <tr>
-                                <th width="100">市场方RBD</th>
-                                <th width="100">承运方RBD</th>
-                                <th width="100">市场方服务等级</th>
-                                <th width="100">承运方服务等级</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                             <tr>
-                              <td><Input type ="text" className="required"/></td>
-                              <td><Input type ="text"/></td>
-                              <td><Input type ="text"/></td>
-                              <td><Input type ="text"/></td>
-                            </tr>
-                          </tbody>
-                      </table>
-                  </div>
+                  <Table196 />
               </Col>
           </Col>
         </Row>
