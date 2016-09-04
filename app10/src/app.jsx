@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Button,Row, Col} from 'antd';
+import { Button,Row, Col,Affix} from 'antd';
 import PubSub from 'pubsub-js' ;
 import {SUBMITFROM_EVENT,RESETFROM_EVENT} from './constants/constant.js' ;
 require('./lib/jq-validate/index.js') ;
@@ -20,15 +20,19 @@ export default class App extends Component {
   render(){
     return (
       <div>
-        <NavBar/>
+        <Affix>
+          <NavBar/>
+        </Affix>
         <Row>
             <Col span={4} offset={20} style={{marginTop:"10px"}}>
                 <Button type="primary" onClick={this.handleSubmit}>保存</Button>
                 <Button type="ghost" onClick={this.handleReset}>重置</Button>
             </Col>
         </Row>
-        <div style={{paddingTop:"10px"}} className ="container">
+        <div style={{paddingTop:"10px",height:"1000px"}} className ="container">
            <ValidateBasic />
+                  
+
         </div>
       </div>
     ) ;
