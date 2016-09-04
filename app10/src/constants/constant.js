@@ -4,3 +4,7 @@ export const FETCH_FIELDS_UPDATE = "fetchFieldsUpdate" ;
 export const SUBMITFROM_EVENT = "submitFormEvent";
 export const RESETFROM_EVENT = "resetFormEvent";
 export const UPDATE_SUBTABLE_FIELDVALUE = "updateSubTableFieldValue" ;
+/////////////table196 start////////////////////////////
+export const ADD_LINE196 = "addLine196" ;
+export const DELETE_LINE196 = "addLine196" ;
+/////////////table196 end///////////////////////////

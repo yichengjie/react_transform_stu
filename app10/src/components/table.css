@@ -37,3 +37,7 @@
     line-height: 23px;
     padding: 1px 1px;
 }
+.table_footer{
+    display: inline-block;
+    margin-top: 3px;
+}

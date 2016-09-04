@@ -6,7 +6,7 @@ import PubSub from 'pubsub-js' ;
 import {SUBMITFROM_EVENT,RESETFROM_EVENT} from '../constants/constant.js' ;
 import autobind from 'autobind-decorator' ;
 import './table.css' ;
-import Table196 from './Table196.jsx' ;
+import Table196 from '../containers/Table196.js' ;
 
 
 
@@ -106,7 +106,6 @@ class BasicDemo extends Component {
             </Col>
           </Row>
         </Card>
-        
       </Form>
     );
   }

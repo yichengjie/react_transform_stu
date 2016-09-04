@@ -1,34 +1,45 @@
 import React,{Component} from 'react' ;
 import {Input} from 'antd' ;
+import TableFooter from './TableFooter.jsx'; 
 
 class SubTable extends Component{
-    constructor(props){
-        super(props) ;
+    renderTbody(list){
+        return list.map((item,index) =>{
+            return <tr key ={index}>
+                <td><Input name ={index + '1'} type ="text" className="required"/></td>
+                <td><Input type ="text"/></td>
+                <td><Input type ="text"/></td>
+                <td><Input name ={index + '4'} type ="text" className="required"/></td>
+            </tr>
+        }) ;
     }
+    renderThead(){
+        return (
+            <tr>
+                <th width="100">市场方RBD</th>
+                <th width="100">承运方RBD</th>
+                <th width="100">市场方服务等级</th>
+                <th width="100">承运方服务等级</th>
+            </tr>
+       );
+    }
+
     render(){
         return (
          <div className="table_layout"  style={{width:"500px"}}>
             <table>
                 <thead>
-                    <tr>
-                        <th width="100">市场方RBD</th>
-                        <th width="100">承运方RBD</th>
-                        <th width="100">市场方服务等级</th>
-                        <th width="100">承运方服务等级</th>
-                    </tr>
+                    {this.renderThead()}
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                    </tr>
+                    {this.renderTbody(this.props.list)}
                 </tbody>
             </table>
+            <TableFooter addTableLine = {this.props.addLine196}/>
         </div>
         ) ;
     }
 }
+
 
 export default SubTable ;
