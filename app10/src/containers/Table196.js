@@ -1,6 +1,6 @@
 import Table196 from '../components/Table196.jsx' ;
 import {connect} from 'react-redux';
-import {addLine196} from '../actions/action.js' ;
+import {addLine196,deleteLine196} from '../actions/action.js' ;
 
 function mapState2Props (state,ownProp){
     return {
@@ -10,7 +10,8 @@ function mapState2Props (state,ownProp){
 
 function mapDispatch2Props(dispatch,ownProp){
     return {
-      addLine196:()=>dispatch(addLine196()) 
+      addLine196:()=>dispatch(addLine196()) ,
+      deleteLine196:(id)=>dispatch(deleteLine196(id))
     } ;
 }
 export default connect(

@@ -41,3 +41,6 @@
     display: inline-block;
     margin-top: 3px;
 }
+.selected_td { 
+    background-color: #D9EDF7;
+}

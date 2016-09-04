@@ -1,6 +1,9 @@
 import React ,{Component} from 'react';
 import {Button} from 'antd' ;
  class TableFooter extends Component {
+   deleteTableLine(){
+     console.info('hello world') ;
+   }
    render (){
      return (
        <div className="table_footer">

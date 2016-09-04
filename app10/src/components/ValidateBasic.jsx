@@ -64,6 +64,7 @@ class BasicDemo extends Component {
     this.jq_validator = null ;
   }
 
+
   render() {
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.form;
     const insuranceProps = getFieldProps('insurance',{
@@ -101,7 +102,7 @@ class BasicDemo extends Component {
           <Row>
             <Col>
                 <Col span={12} offset={4}>
-                    <Table196 />
+                    <Table196/>
                 </Col>
             </Col>
           </Row>
