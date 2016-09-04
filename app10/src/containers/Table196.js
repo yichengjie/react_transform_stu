@@ -1,6 +1,6 @@
 import Table196 from '../views/Table196.jsx' ;
 import {connect} from 'react-redux';
-import {addTbLine,deleteTbLine} from '../actions/action.js' ;
+import {addTbLine,deleteTbLine,updateSubTableFieldValue} from '../actions/action.js' ;
 
 function mapState2Props (state,ownProp){
     return {
@@ -11,7 +11,8 @@ function mapState2Props (state,ownProp){
 function mapDispatch2Props(dispatch,ownProp){
     return {
       addTbLine:(param)=>dispatch(addTbLine(param)) ,
-      deleteTbLine:(param)=>dispatch(deleteTbLine(param))
+      deleteTbLine:(param)=>dispatch(deleteTbLine(param)),
+      updateSubTableFieldValue:(param)=>dispatch(updateSubTableFieldValue(param))
     } ;
 }
 export default connect(

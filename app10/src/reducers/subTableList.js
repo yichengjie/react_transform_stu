@@ -28,6 +28,17 @@ function deleteLine(param,state){
    return Object.assign({},state,{[tbname]:newList}) ;
 }
 
+function updateInputValue(param,state){
+    let {tbname,id,name,value} = param ;
+    let newList = state[tbname].map((item) => {
+      if(item.id === id){
+        item[name] = value ;
+      }
+      return item ;
+    }) ;
+    return Object.assign({},state,{[tbname]:newList}) ;
+}
+
 const listSubTable = (state=initSate,action) =>{
   switch (action.type) {
     case ADD_TBLINE : 
@@ -36,7 +47,7 @@ const listSubTable = (state=initSate,action) =>{
       return deleteLine(action.param,state) ;
     }
     case UPDATE_SUBTABLE_FIELDVALUE:
-      return state ;
+      return updateInputValue(action.param,state) ;
     default:
       return state ;
   }

@@ -10,12 +10,8 @@ let mapState2Props = (state,ownProp) =>{
 };
 let mapDispatch2Props = (dispatch,ownProp) => {
   return {
-    onFieldsChange:(filed) =>{
-      dispatch(updateFieldValue(filed))
-    },
-    fetchFieldsUpdate:(project) => {
-      dispatch(fetchFieldsUpdate(project)) ;
-    }
+    onFieldsChange:(filed) =>dispatch(updateFieldValue(filed)),
+    fetchFieldsUpdate:(project) => dispatch(fetchFieldsUpdate(project))
   };
 } ;
 

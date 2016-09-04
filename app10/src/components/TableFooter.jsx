@@ -5,6 +5,7 @@ class TableFooter extends Component {
   addTableLine(){
     let tbname = this.props.tbname ;
     let id = uniquid(tbname) ;
+    console.info(this.props.obj) ;
     var obj = {...this.props.obj,id} ;
     this.props.addTableLine({tbname,obj}) ;
   }

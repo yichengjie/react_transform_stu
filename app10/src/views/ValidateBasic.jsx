@@ -7,8 +7,6 @@ import {SUBMITFROM_EVENT,RESETFROM_EVENT} from '../constants/constant.js' ;
 import autobind from 'autobind-decorator' ;
 import Table196 from '../containers/Table196.js' ;
 
-
-
 function noop() {
   return false;
 }
@@ -101,7 +99,7 @@ class BasicDemo extends Component {
           <Row>
             <Col>
                 <Col span={12} offset={4}>
-                    <Table196 tbname ="list196" obj = {{name:'yicj'}}/>
+                    <Table196 tbname ="list196"/>
                 </Col>
             </Col>
           </Row>

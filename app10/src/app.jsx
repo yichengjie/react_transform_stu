@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
-import ValidateBasic from './containers/ValidateBasic.js' ;
 import { Button,Row, Col} from 'antd';
 import PubSub from 'pubsub-js' ;
 import {SUBMITFROM_EVENT,RESETFROM_EVENT} from './constants/constant.js' ;
 require('./lib/jq-validate/index.js') ;
 import NavBar from './components/NavBar.jsx' ;
+import ValidateBasic from './containers/ValidateBasic.js' ;
 
 export default class App extends Component {
   constructor(props) {
