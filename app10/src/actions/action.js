@@ -14,10 +14,10 @@ export function updateSubTableFieldValue(param){
 }
 
 /////////////////////table196 start///////////////////////////////////
-export function addLine196(){
-  return {type:ADD_LINE196}
+export function addLine196(param){
+  return {type:ADD_LINE196,param}
 }
-export function deleteLine196(id){
-  return {type:DELETE_LINE196,id}
+export function deleteLine196(param){
+  return {type:DELETE_LINE196,param}
 }
 /////////////////////table196 end///////////////////////////////////

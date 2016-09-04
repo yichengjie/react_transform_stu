@@ -1,3 +1,4 @@
+"use strict" ;
 
 import {UPDATE_FIELDVALUE,FETCH_FIELDS_UPDATE} from '../constants/constant.js' ;
 let PROJECT_FIELDS_NAMES = ["insurance","propertyTax"] ;

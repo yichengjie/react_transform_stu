@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --progress --profile --colors --hot",
-    "build": "webpack --progress --profile --colors",
     "test": "karma start"
   },
   "repository": {

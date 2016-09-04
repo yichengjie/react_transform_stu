@@ -3,18 +3,20 @@ import {Input} from 'antd' ;
 import TableFooter from './TableFooter.jsx'; 
 
 class SubTable extends Component{
-
     constructor(props){
         super(props) ;
         this.state ={
             selectedId:''
         } ;
         this.renderTbody = this.renderTbody.bind(this) ;
+        this.clearSelectedId = this.clearSelectedId.bind(this) ;
+    }
+    clearSelectedId(){
+        this.setState({selectedId:""}) ;
     }
     handleClickTr(id){
-        this.setState({selectedId:id}) ;
+      this.setState({selectedId:id}) ;
     }
-
     renderTbody(list){
         return list.map((item,index) =>{
             return <tr key ={item.id}  onClick ={this.handleClickTr.bind(this,item.id)} 
@@ -49,8 +51,12 @@ class SubTable extends Component{
                 </tbody>
             </table>
             <TableFooter 
+                tbname = "list196"
+                obj = {{name:'yicj'}}
+                selectedId = {this.state.selectedId}
                 addTableLine = {this.props.addLine196} 
-                deleteTableLine={this.props.deleteLine196.bind(this,this.state.selectedId)}
+                deleteTableLine={this.props.deleteLine196}
+                clearSelectedId={this.clearSelectedId}
             />
         </div>
         ) ;
