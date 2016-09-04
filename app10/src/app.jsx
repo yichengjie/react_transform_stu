@@ -22,7 +22,7 @@ export default class App extends Component {
       <div>
         <NavBar/>
         <Row>
-            <Col span={10} offset={20} style={{marginTop:"10px"}}>
+            <Col span={4} offset={20} style={{marginTop:"10px"}}>
                 <Button type="primary" onClick={this.handleSubmit}>保存</Button>
                 <Button type="ghost" onClick={this.handleReset}>重置</Button>
             </Col>

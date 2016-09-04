@@ -20,7 +20,7 @@ export default class App extends Component {
   render(){
     return (
       <div className = "container">
-        <Row  gutter={16}>
+        <Row >
           <Col span={2} offset={7}>
             <Button type="primary" onClick={this.handleSubmit}>保存</Button>
           </Col>
