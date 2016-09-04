@@ -5,7 +5,8 @@ const listSubTable = (state=[],action) =>{
   switch (action.type) {
     case ADD_LINE196 : {
        let id = uniquid('t196_');
-      return [...state,id] ;
+       var obj = {id} ;
+      return [...state,obj] ;
     }
     case DELETE_LINE196 :{
       return state ;

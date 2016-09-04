@@ -5,11 +5,11 @@ import TableFooter from './TableFooter.jsx';
 class SubTable extends Component{
     renderTbody(list){
         return list.map((item,index) =>{
-            return <tr key ={index}>
-                <td><Input name ={index + '1'} type ="text" className="required"/></td>
+            return <tr key ={item.id}>
+                <td><Input name ={item.id + '1'} type ="text" className="required"/></td>
                 <td><Input type ="text"/></td>
                 <td><Input type ="text"/></td>
-                <td><Input name ={index + '4'} type ="text" className="required"/></td>
+                <td><Input name ={item.id + '4'} type ="text" className="required"/></td>
             </tr>
         }) ;
     }
