@@ -1,4 +1,4 @@
-import ValidateBasic from '../components/ValidateBasic.jsx' ;
+import ValidateBasic from '../views/ValidateBasic.jsx' ;
 import {connect} from 'react-redux';
 import {updateFieldValue,fetchFieldsUpdate} from  '../actions/action.js' ;
 

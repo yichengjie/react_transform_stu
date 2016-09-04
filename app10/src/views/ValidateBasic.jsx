@@ -5,7 +5,6 @@ const FormItem = Form.Item;
 import PubSub from 'pubsub-js' ;
 import {SUBMITFROM_EVENT,RESETFROM_EVENT} from '../constants/constant.js' ;
 import autobind from 'autobind-decorator' ;
-import './table.css' ;
 import Table196 from '../containers/Table196.js' ;
 
 
@@ -102,7 +101,7 @@ class BasicDemo extends Component {
           <Row>
             <Col>
                 <Col span={12} offset={4}>
-                    <Table196/>
+                    <Table196 tbname ="list196" obj = {{name:'yicj'}}/>
                 </Col>
             </Col>
           </Row>

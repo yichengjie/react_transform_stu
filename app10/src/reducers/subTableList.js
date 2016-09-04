@@ -1,4 +1,5 @@
-import {UPDATE_SUBTABLE_FIELDVALUE,ADD_LINE196,DELETE_LINE196} from '../constants/constant.js' ;
+import {UPDATE_SUBTABLE_FIELDVALUE,
+  ADD_TBLINE,DELETE_TBLINE} from '../constants/constant.js' ;
 
 
 let initSate = {
@@ -29,9 +30,9 @@ function deleteLine(param,state){
 
 const listSubTable = (state=initSate,action) =>{
   switch (action.type) {
-    case ADD_LINE196 : 
+    case ADD_TBLINE : 
       return addLine(action.param,state) ;
-    case DELETE_LINE196 :{
+    case DELETE_TBLINE :{
       return deleteLine(action.param,state) ;
     }
     case UPDATE_SUBTABLE_FIELDVALUE:

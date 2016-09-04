@@ -5,6 +5,6 @@ export const SUBMITFROM_EVENT = "submitFormEvent";
 export const RESETFROM_EVENT = "resetFormEvent";
 export const UPDATE_SUBTABLE_FIELDVALUE = "updateSubTableFieldValue" ;
 /////////////table196 start////////////////////////////
-export const ADD_LINE196 = "addLine196" ;
-export const DELETE_LINE196 = "deleteLine196" ;
+export const ADD_TBLINE = "addTbLine" ;
+export const DELETE_TBLINE = "deleteTbLine" ;
 /////////////table196 end///////////////////////////
