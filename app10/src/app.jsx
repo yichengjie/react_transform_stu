@@ -1,10 +1,21 @@
 import React,{Component} from 'react';
-import { Button,Row, Col,Affix} from 'antd';
+import { Button,Row, Col,Affix,BackTop} from 'antd';
 import PubSub from 'pubsub-js' ;
 import {SUBMITFROM_EVENT,RESETFROM_EVENT} from './constants/constant.js' ;
 require('./lib/jq-validate/index.js') ;
 import NavBar from './components/NavBar.jsx' ;
 import ValidateBasic from './containers/ValidateBasic.js' ;
+
+const style = {
+  height: 40,
+  width: 40,
+  lineHeight: '40px',
+  borderRadius: 4,
+  backgroundColor: '#57c5f7',
+  color: '#fff',
+  textAlign: 'center',
+  fontSize: 20,
+};
 
 export default class App extends Component {
   constructor(props) {
@@ -31,8 +42,9 @@ export default class App extends Component {
         </Row>
         <div style={{paddingTop:"10px",height:"1000px"}} className ="container">
            <ValidateBasic />
-                  
-
+           <BackTop style={{ bottom: 100 }}>
+              <div style={style}>UP</div>
+           </BackTop>
         </div>
       </div>
     ) ;
