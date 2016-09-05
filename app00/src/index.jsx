@@ -13,6 +13,8 @@ import NotificationBasic from './components/NotificationBasic.jsx' ;
 import NotificationCustomEdit from './components/NotificationCustomEdit.jsx' ;
 import PopconfirmBasic from './components/PopconfirmBasic.jsx' ;
 import PopconfirmLocation from './components/PopconfirmLocation.jsx' ;
+import RangePicker from './components/RangePicker.jsx' ;
+import CustomeDateRange from './components/CustomeDateRange.jsx' ;
 
 //ModalSync01
 
@@ -34,6 +36,8 @@ ReactDOM.render(
       <NotificationCustomEdit/>
       <PopconfirmBasic/>
       <PopconfirmLocation/>
+      <RangePicker/>
+      <CustomeDateRange/>
     </div>
   </div>
   , mountNode);

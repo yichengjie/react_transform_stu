@@ -7,6 +7,12 @@ import {SUBMITFROM_EVENT,RESETFROM_EVENT} from '../constants/constant.js' ;
 import autobind from 'autobind-decorator' ;
 import Table196 from '../containers/Table196.js' ;
 
+
+const disabledDate = function (current) {
+  // can not select days before today
+  return current && current.getTime() < Date.now();
+};
+
 function noop() {
   return false;
 }
@@ -119,7 +125,19 @@ class BasicDemo extends Component {
               hasFeedback
               label="结束日期"
             >
-              <DatePicker {...endDateProps} format ="yyyy-MM-dd HH:mm:ss" showTime ={true}/>
+              <DatePicker {...endDateProps} 
+                format ="yyyy-MM-dd HH:mm:ss" 
+                showTime ={true}
+                disabledDate={disabledDate} 
+              />
+          </FormItem>
+
+          <FormItem 
+           {...formItemLayout}
+              hasFeedback
+              label="日期范围"
+          >
+          
           </FormItem>
            
          </Card>
