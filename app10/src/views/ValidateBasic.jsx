@@ -104,7 +104,7 @@ class BasicDemo extends Component {
             </Col>
           </Row>
         </Card>
-
+        <br/>
          <Card>
             <FormItem
               {...formItemLayout}
