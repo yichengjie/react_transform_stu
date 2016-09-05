@@ -116,8 +116,16 @@ class BasicDemo extends Component {
 
   checkEndDate(rule, value, callback) {
     const form = this.props.form;
-    if (value && value !== form.getFieldValue('startDate')) {
-      callback('起始日期必须和结束日期相同!');
+    if (value) {
+      let startDateStr = form.getFieldValue('startDate') ;
+      let endDateStr = form.getFieldValue('endDate') ;
+      let startDate = new Date(startDateStr) ;
+      let endDate = new Date(endDateStr) ;
+      if(startDate>endDate){
+        callback('结束日期必须小于起始日期!');
+      }else{
+        callback() ;
+      }
     } else {
       callback();
     }
@@ -143,6 +151,7 @@ class BasicDemo extends Component {
                {...startDateProps} 
                format ="yyyy-MM-dd HH:mm:ss" 
                showTime ={true}
+               disabledDate={disabledDate} 
             />
           </FormItem>
           <FormItem
