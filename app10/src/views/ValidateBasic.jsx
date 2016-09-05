@@ -111,7 +111,7 @@ class BasicDemo extends Component {
               hasFeedback
               label="起始日期"
             >
-              <DatePicker {...startDateProps}/>
+              <DatePicker {...startDateProps} format ="yyyy-MM-dd HH:mm:ss" showTime ={true}/>
           </FormItem>
 
           <FormItem
@@ -119,7 +119,7 @@ class BasicDemo extends Component {
               hasFeedback
               label="结束日期"
             >
-              <DatePicker {...endDateProps}/>
+              <DatePicker {...endDateProps} format ="yyyy-MM-dd HH:mm:ss" showTime ={true}/>
           </FormItem>
            
          </Card>
