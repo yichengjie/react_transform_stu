@@ -1,0 +1,13 @@
+驻中航信做java web开发。
+主要负责开发的项目有两个，都属于后台信息管理类型的项目。
+一：项目主要有5个模块，附加服务、数据源配置、里程积分兑换、附加服务配置、运价验证。前台js主要使用angular1.x，css使用bootstrap及相关生态插件，打包工具前期使用spm打包seajs模块，后期更换为更加简单强大的webpack。
+有一年多的angular1.x开发经验。后台使用的是ssh(Spring,Spring mvc,Hibernate)，前期css是基于公司自己的一套，和少量对bootstrap的定制，后期升级为主要依赖bootstrap，自定义少量的css。
+二：项目主要有两个比较小的模块，品牌管理，品牌集管理。前台js使用vue.js，css使用bootstrap,打包工具和上个项目一样，也属于前期spm后期webpack。
+对react+redux+ant desgin有学习，有简单的三者结合的小demo，能够直接上手写react项目。
+
+
+驻中航信做java web项目开发。
+负责前后台主要开发工作，属于后台信息管理类项目。前台使用主要使用backbone，bootstrap，模块管理使用seajs，打包工具spm，后台使用SSH(Spring,Spring mvc,Hibernate)。
+本次任务主要是重构以前的一个传统的SSH（spring+struts2+hiber）+jQuery 项目。主要为了解决项目中js文件写的比较乱，比较多，一个文件js文件过大，后期维护困难等问题。
+项目涉及的模块有权限、人员管理、服务器管理，服务管理，部署管理，数据源管理，日志管理几个模块。
+

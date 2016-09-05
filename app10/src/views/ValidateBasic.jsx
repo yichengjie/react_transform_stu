@@ -29,13 +29,14 @@ class BasicDemo extends Component {
     //发布事件监听
     token = PubSub.subscribe( SUBMITFROM_EVENT, this.handleSubmit );
     resetToken = PubSub.subscribe(RESETFROM_EVENT,this.handleReset)  ;
+    this.handleReset = this.handleReset.bind(this) ;
+    this.handleSubmit = this.handleSubmit.bind(this) ;
+    this.renderCard1 = this.renderCard1.bind(this) ;
   }
-  @autobind
   handleReset(e) {
     //e.preventDefault();
     this.props.form.resetFields();
   }
-  @autobind
   handleSubmit(e) {
     var jqFlag = this.jq_validator.form() ;
     //e.preventDefault();
@@ -65,6 +66,13 @@ class BasicDemo extends Component {
     PubSub.unsubscribe(resetToken) ;
     this.jq_validator = null ;
   }
+
+
+  renderCard1 (){
+
+  }
+
+
 
 
   render() {
@@ -115,7 +123,9 @@ class BasicDemo extends Component {
             </Col>
           </Row>
         </Card>
+
         <br/>
+
          <Card>
             <FormItem
               {...formItemLayout}
@@ -148,8 +158,9 @@ class BasicDemo extends Component {
               style={{ width: 184 }} 
               />
           </FormItem>
-           
          </Card>
+
+
 
       </Form>
     );
