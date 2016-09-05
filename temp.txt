@@ -3,7 +3,8 @@
 一：项目主要有5个模块，附加服务、数据源配置、里程积分兑换、附加服务配置、运价验证。前台js主要使用angular1.x，css使用bootstrap及相关生态插件，打包工具前期使用spm打包seajs模块，后期更换为更加简单强大的webpack。
 有一年多的angular1.x开发经验。后台使用的是ssh(Spring,Spring mvc,Hibernate)，前期css是基于公司自己的一套，和少量对bootstrap的定制，后期升级为主要依赖bootstrap，自定义少量的css。
 二：项目主要有两个比较小的模块，品牌管理，品牌集管理。前台js使用vue.js，css使用bootstrap,打包工具和上个项目一样，也属于前期spm后期webpack。
-对react+redux+ant desgin有学习，有简单的三者结合的小demo，能够直接上手写react项目。
+上面两个项目前端技术选型的主要负责人。
+对react+redux+ant desgin有学习，有简单的三者结合的小demo，能够直接上手写react项目。能够编写正常项目中需要的css。
 
 
 驻中航信做java web项目开发。
