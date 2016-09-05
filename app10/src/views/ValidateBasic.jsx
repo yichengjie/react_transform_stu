@@ -1,5 +1,5 @@
 import React ,{Component}from 'react' ;
-import { Button, Form, Input ,Row, Col,Table, Icon ,Card} from 'antd';
+import { Button, Form, Input ,Row, Col,Table, Icon ,Card,DatePicker} from 'antd';
 const createForm = Form.create;
 const FormItem = Form.Item;
 import PubSub from 'pubsub-js' ;
@@ -43,11 +43,6 @@ class BasicDemo extends Component {
     });
   }
   componentDidMount(){
-    // setTimeout(function(){
-    //   this.props.fetchFieldsUpdate(
-    //     {"insurance":"hello world",propertyTax:"test"}
-    //   ) ;
-    // }.bind(this),2000) ;
     //注册jquery validate框架
     //对表单注册校验
     var validator = $("#myForm").validate({meta:""});
@@ -76,13 +71,18 @@ class BasicDemo extends Component {
       labelCol: { span: 4 },
       wrapperCol: { span: 12 },
     };
+
+    const startDateProps = getFieldProps('startDate') ;
+    const endDateProps = getFieldProps('endDate') ;
+
+
     return (
       <Form horizontal id ="myForm">
 
         <Card>
           <FormItem
               {...formItemLayout}
-              label="Insurance"
+              label="姓名"
               hasFeedback
               help={isFieldValidating('insurance') ? 'validating...' : (getFieldError('insurance') || []).join(', ')}
             >
@@ -92,7 +92,7 @@ class BasicDemo extends Component {
           <FormItem
               {...formItemLayout}
               hasFeedback
-              label="Property Tax"
+              label="描述"
             >
               <Input {...propertyTaxProps} min={0} />
           </FormItem>
@@ -104,6 +104,26 @@ class BasicDemo extends Component {
             </Col>
           </Row>
         </Card>
+
+         <Card>
+            <FormItem
+              {...formItemLayout}
+              hasFeedback
+              label="起始日期"
+            >
+              <DatePicker {...startDateProps}/>
+          </FormItem>
+
+          <FormItem
+              {...formItemLayout}
+              hasFeedback
+              label="结束日期"
+            >
+              <DatePicker {...endDateProps}/>
+          </FormItem>
+           
+         </Card>
+
       </Form>
     );
   }

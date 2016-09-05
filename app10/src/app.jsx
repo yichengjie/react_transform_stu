@@ -40,7 +40,7 @@ export default class App extends Component {
                 <Button type="ghost" onClick={this.handleReset}>重置</Button>
             </Col>
         </Row>
-        <div style={{paddingTop:"10px",height:"1000px"}} className ="container">
+        <div style={{paddingTop:"10px",height:"2000px"}} className ="container">
            <ValidateBasic />
            <BackTop style={{ bottom: 100 }}>
               <div style={style}>UP</div>
