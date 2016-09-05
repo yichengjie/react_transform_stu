@@ -15,6 +15,10 @@ import PopconfirmBasic from './components/PopconfirmBasic.jsx' ;
 import PopconfirmLocation from './components/PopconfirmLocation.jsx' ;
 import RangePicker from './components/RangePicker.jsx' ;
 import CustomeDateRange from './components/CustomeDateRange.jsx' ;
+import ValidateOther from './views/ValidateOther.jsx' ;
+import ValidateCustomized from './views/ValidateCustomized.jsx' ;
+import MixForm from './views/MixForm.jsx' ;
+
 
 //ModalSync01
 
@@ -26,7 +30,9 @@ ReactDOM.render(
   <div>
     <NavBar />
     <div className="container" style ={{paddingTop:"50px"}}>
-      <ModalBasic/>
+      {
+        /**
+         * <ModalBasic/>
       <ModalSync01/>
       <ModalFootCustomEdit/>
       <ModalConfirm/><br/>
@@ -38,6 +44,16 @@ ReactDOM.render(
       <PopconfirmLocation/>
       <RangePicker/>
       <CustomeDateRange/>
+         * 
+         */
+      }
+      {
+        /**
+         *  <ValidateOther/>
+         * <ValidateCustomized />
+         */
+      }
+      <MixForm/>
     </div>
   </div>
   , mountNode);

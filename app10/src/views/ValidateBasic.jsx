@@ -1,5 +1,5 @@
 import React ,{Component}from 'react' ;
-import { Button, Form, Input ,Row, Col,Table, Icon ,Card,DatePicker} from 'antd';
+import { Button, Form, Input ,Row, Col,Table, Icon ,Card,DatePicker,InputNumber} from 'antd';
 const createForm = Form.create;
 const FormItem = Form.Item;
 import PubSub from 'pubsub-js' ;
@@ -176,6 +176,14 @@ class BasicDemo extends Component {
               style={{ width: 184 }} 
               />
           </FormItem>
+          <FormItem
+            {...formItemLayout}
+              hasFeedback
+              label="数字输入框"
+          >
+            <InputNumber />
+          </FormItem>
+          
       </Card>
     ) ;
   }
