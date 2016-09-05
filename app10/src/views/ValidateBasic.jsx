@@ -32,19 +32,22 @@ class BasicDemo extends Component {
   constructor(props) {
     super(props) ;
     //发布事件监听
-    token = PubSub.subscribe( SUBMITFROM_EVENT, this.handleSubmit );
-    resetToken = PubSub.subscribe(RESETFROM_EVENT,this.handleReset)  ;
     this.handleReset = this.handleReset.bind(this) ;
     this.handleSubmit = this.handleSubmit.bind(this) ;
     this.renderCard1 = this.renderCard1.bind(this) ;
     this.renderCard2 = this.renderCard2.bind(this) ;
+    this.checkEndDate = this.checkEndDate.bind(this) ;
+    token = PubSub.subscribe( SUBMITFROM_EVENT, this.handleSubmit );
+    resetToken = PubSub.subscribe(RESETFROM_EVENT,this.handleReset)  ;
   }
   handleReset(e) {
     //e.preventDefault();
     this.props.form.resetFields();
   }
+  
   handleSubmit(e) {
-    var jqFlag = this.jq_validator.form() ;
+    let jqFlag = this.jq_validator.form() ;
+    //let jqFlag = true ;
     //e.preventDefault();
     this.props.form.validateFields((errors, values) => {
       if (errors) {
@@ -111,10 +114,23 @@ class BasicDemo extends Component {
     ) ;
   }
 
+  checkEndDate(rule, value, callback) {
+    const form = this.props.form;
+    if (value && value !== form.getFieldValue('startDate')) {
+      callback('起始日期必须和结束日期相同!');
+    } else {
+      callback();
+    }
+  }
+
   renderCard2(){
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.form;
     const startDateProps = getFieldProps('startDate') ;
-    const endDateProps = getFieldProps('endDate') ;
+    const endDateProps = getFieldProps('endDate',{
+       rules: [
+          { validator: this.checkEndDate },
+       ]
+    }) ;
     const rangeDate = getFieldProps('rangeDate') ;
     return (
       <Card>
@@ -123,7 +139,11 @@ class BasicDemo extends Component {
             hasFeedback
             label="起始日期"
           >
-              <DatePicker {...startDateProps} format ="yyyy-MM-dd HH:mm:ss" showTime ={true}/>
+            <DatePicker 
+               {...startDateProps} 
+               format ="yyyy-MM-dd HH:mm:ss" 
+               showTime ={true}
+            />
           </FormItem>
           <FormItem
               {...formItemLayout}
@@ -131,9 +151,9 @@ class BasicDemo extends Component {
               label="结束日期"
             >
               <DatePicker {...endDateProps} 
-                format ="yyyy-MM-dd HH:mm:ss" 
-                showTime ={true}
-                disabledDate={disabledDate} 
+                 format ="yyyy-MM-dd HH:mm:ss" 
+                 showTime ={true}
+                 disabledDate={disabledDate} 
               />
           </FormItem>
           <FormItem 

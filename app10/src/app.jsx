@@ -22,11 +22,11 @@ export default class App extends Component {
     super(props) ;
   }
   handleSubmit(e){
-    console.info('提交表单') ;
-    PubSub.publish( SUBMITFROM_EVENT, '保存表单数据!' );
+    console.info('点击了保存按钮!') ;
+    PubSub.publish( SUBMITFROM_EVENT, '点击了保存按钮!' );
   }
   handleReset(e){
-    PubSub.publish(RESETFROM_EVENT,'重置表单数据!') ;
+    PubSub.publish(RESETFROM_EVENT,'点击了重置表单数据按钮!') ;
   }
   render(){
     return (
