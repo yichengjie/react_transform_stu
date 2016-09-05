@@ -27,7 +27,8 @@ let initialState = {
   insurance:{value:"yicj"},
   propertyTax:{value:"hello"},
   startDate:{value:"2016-09-05 12:24:59"},
-  endDate:{value:"2016-09-05 12:24:59"}
+  endDate:{value:"2016-09-05 12:24:59"},
+  rangeDate:{value:["2016-09-05","2016-09-06"]}
 } ;
 
 const form = (state = initialState, action) => {

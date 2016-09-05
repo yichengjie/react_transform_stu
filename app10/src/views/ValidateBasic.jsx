@@ -6,12 +6,16 @@ import PubSub from 'pubsub-js' ;
 import {SUBMITFROM_EVENT,RESETFROM_EVENT} from '../constants/constant.js' ;
 import autobind from 'autobind-decorator' ;
 import Table196 from '../containers/Table196.js' ;
-
+const RangePicker = DatePicker.RangePicker;
 
 const disabledDate = function (current) {
   // can not select days before today
   return current && current.getTime() < Date.now();
 };
+function onChange(value, dateString) {
+  console.log('From: ', value[0], ', to: ', value[1]);
+  console.log('From: ', dateString[0], ', to: ', dateString[1]);
+}
 
 function noop() {
   return false;
@@ -80,6 +84,7 @@ class BasicDemo extends Component {
 
     const startDateProps = getFieldProps('startDate') ;
     const endDateProps = getFieldProps('endDate') ;
+    const rangeDate = getFieldProps('rangeDate') ;
 
 
     return (
@@ -137,7 +142,11 @@ class BasicDemo extends Component {
               hasFeedback
               label="日期范围"
           >
-          
+            <RangePicker 
+              format="yyyy-MM-dd"
+              {...rangeDate}
+              style={{ width: 184 }} 
+              />
           </FormItem>
            
          </Card>
