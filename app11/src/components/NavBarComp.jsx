@@ -20,6 +20,7 @@ const NavBarComp = React.createClass({
       <Menu onClick={this.handleClick}
         selectedKeys={[this.state.current]}
         mode="horizontal"
+        theme="dark"
       >
           <Menu.Item key="mail">
             <Icon type="home" />OCGUI
