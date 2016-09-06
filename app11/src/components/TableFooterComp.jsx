@@ -1,7 +1,7 @@
 import React ,{Component} from 'react';
 import {Button} from 'antd' ;
 import uniquid from 'uniquid' ;
-class TableFooter extends Component {
+class TableFooterComp extends Component {
   addTableLine(){
     let tbname = this.props.tbname ;
     let id = uniquid(tbname) ;
@@ -28,4 +28,4 @@ class TableFooter extends Component {
     ) ;
   }
 }
-export default TableFooter;
+export default TableFooterComp;

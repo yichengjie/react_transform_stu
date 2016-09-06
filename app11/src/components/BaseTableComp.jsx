@@ -1,9 +1,9 @@
 import React,{Component} from 'react' ;
 import {Input} from 'antd' ;
-import TableFooter from './TableFooter.jsx'; 
-import './table.css' ;
+import TableFooterComp from './TableFooterComp.jsx'; 
+import '../styles/table.css' ;
 
-class BaseTable extends Component{
+class BaseTableComp extends Component{
     constructor(props){
         super(props) ;
         this.state ={
@@ -38,7 +38,7 @@ class BaseTable extends Component{
                     {this.renderTbody(this.props.list)}
                 </tbody>
             </table>
-            <TableFooter 
+            <TableFooterComp 
                 tbname = {this.props.tbname}
                 obj = {this.getSubTableObj()}
                 selectedId = {this.state.selectedId}
@@ -52,4 +52,4 @@ class BaseTable extends Component{
 }
 
 
-export default BaseTable ;
+export default BaseTableComp ;

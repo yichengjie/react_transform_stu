@@ -7,7 +7,6 @@ var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
-
 module.exports= {
   entry:{
     index:['./src/index.jsx']
@@ -26,7 +25,10 @@ module.exports= {
     progress: true
   },
   resolve: {
-      extensions: ['', '.js', '.jsx']
+      extensions: ['', '.js', '.jsx'],
+      alias: {
+        src:APP_PATH
+      }
   },
   //babel重要的loader在这里
   module: {

@@ -26,7 +26,10 @@ module.exports= {
     progress: true
   },
   resolve: {
-      extensions: ['', '.js', '.jsx']
+      extensions: ['', '.js', '.jsx'],
+      alias: {
+        src:APP_PATH
+      }
   },
   //babel重要的loader在这里
   module: {
