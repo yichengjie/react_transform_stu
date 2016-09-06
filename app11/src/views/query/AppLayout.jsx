@@ -1,6 +1,9 @@
 import React,{Component} from 'react' ;
 import NavBarComp from 'src/components/NavBarComp.jsx' ;
 import {Affix} from 'antd' ;
+import 'src/styles/common.css'; 
+import QuerySection from './QuerySection.jsx' ;
+
 export default class AppLayout extends Component {
     constructor(props){
         super(props) ;
@@ -10,8 +13,9 @@ export default class AppLayout extends Component {
             <div>
                 <Affix>
                     <NavBarComp/>
+                    <QuerySection/>
                 </Affix>
-                
+
             </div>
         ) ;
     }

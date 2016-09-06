@@ -1,0 +1,37 @@
+marginL5{
+    margin-left: 5px;
+}
+.marginR5{
+    margin-right: 5px;
+}
+.marginLR5{
+    margin :0 5px;
+}
+.marginL10{
+    margin-left: 10px;
+}
+.marginR10{
+    margin-right: 10px;
+}
+.marginLR10{
+    margin :0 10px;
+}
+.marginL15{
+    margin-left: 15px;
+}
+.marginR15{
+    margin-right: 15px;
+}
+.marginLR15{
+    margin :0 15px;
+}
+.myhand{
+    cursor: pointer;
+}
+.gray { color:#CCCCCC;}
+.red { color:#FF0000;}
+.orange { color:#FF9900;}
+.blue { color:#006699;}
+.bold { font-weight:bold;}
+.font14{ font-size:14px;}
+.font16{ font-size:16px;}
