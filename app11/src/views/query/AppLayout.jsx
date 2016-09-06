@@ -3,6 +3,7 @@ import NavBarComp from 'src/components/NavBarComp.jsx' ;
 import {Affix} from 'antd' ;
 import 'src/styles/common.css'; 
 import QuerySection from './QuerySection.jsx' ;
+import MainContent from './MainContent.jsx' ;
 
 export default class AppLayout extends Component {
     constructor(props){
@@ -15,7 +16,7 @@ export default class AppLayout extends Component {
                     <NavBarComp/>
                     <QuerySection/>
                 </Affix>
-
+                <MainContent/>
             </div>
         ) ;
     }

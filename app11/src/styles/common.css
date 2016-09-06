@@ -35,3 +35,16 @@ marginL5{
 .bold { font-weight:bold;}
 .font14{ font-size:14px;}
 .font16{ font-size:16px;}
+.container{
+    margin: 10px;
+}
+/**顶部一排操作按钮的样式 start ********/
+.nav_oper_btns{
+    display: block;
+    text-align: right;
+    margin-bottom: 8px;
+}
+.nav_oper_btns button:not(:last-child){
+    margin-right: 5px;
+}
+/**顶部一排操作按钮的样式 end ********/
