@@ -49,7 +49,11 @@ module.exports= {
       {
         test: /\.less$/,
         loader: "style!css!less"
-      }
+      },
+      {
+         test: /\.(jpg|png|gif)$/, 
+         loader: "url?limit=8192&name=images/[name].[hash:8].[ext]"
+      },
     ]
   },
   plugins: [

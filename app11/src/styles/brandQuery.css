@@ -81,6 +81,16 @@
     vertical-align: middle;
 }
 
+.brand_img_ca{
+    background: url("./imgs/products/CA.jpg");
+}
+.brand_img_cz{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background: url("./imgs/products/CZ.jpg");
+}
+
 .brand_list{
     height: 80px;
     box-sizing: border-box;
