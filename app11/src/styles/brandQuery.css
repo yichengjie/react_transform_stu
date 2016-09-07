@@ -102,9 +102,7 @@
 .brand_list:not(:last-child){
     border-bottom: 1px dotted #336699;
 }
-.brand_list_item{
-    float: left;
-}
+
 .brand_list .item1{
     display: inline-block;
     width: 30px;
@@ -116,4 +114,14 @@
     font-weight: 700;
     color: #990000;
     font-size: 14px;
+}
+/*.brand_list .oper_btn{
+    display: inline-block ;
+    width: 22px;
+    height: 22px ;
+    line-height: 1;
+}*/
+.brand_list  p{
+    height: 25px ;
+    line-height: 1;
 }

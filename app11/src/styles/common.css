@@ -48,6 +48,12 @@ marginL5{
     margin-right: 5px;
 }
 /**顶部一排操作按钮的样式 end ********/
+.left{
+    float: left ;
+}
+.right{
+    float: right;
+}
 /*.pull-right{
     float: right;
 }*/
