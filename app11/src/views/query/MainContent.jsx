@@ -1,6 +1,6 @@
 import React,{Component} from 'react' ;
 import { Collapse,Button,Row, Col ,Card } from 'antd';
-import BrandGroupItem from './BrandGroupItem.jsx' ;
+import BrandGroupPanel from './BrandGroupPanel.jsx' ;
 
 class MainContent extends Component{
     render(){
@@ -12,7 +12,10 @@ class MainContent extends Component{
                     <Button >截止</Button>
                     <Button >删除</Button>
                 </div>
-                <BrandGroupItem />
+                <BrandGroupPanel />
+                <BrandGroupPanel />
+                <BrandGroupPanel />
+                <BrandGroupPanel />
             </div>
         ) ;
     }
