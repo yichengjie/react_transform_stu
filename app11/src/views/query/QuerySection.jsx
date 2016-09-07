@@ -43,7 +43,6 @@ export default class IndexLayout extends Component {
 
 
     render(){
-        let tmpClassStr = classNames("query_row", { "hide": !this.state.showMoreFlag }) ;
         return (
             <div className ="query_section">
                 <div className="query_row">
