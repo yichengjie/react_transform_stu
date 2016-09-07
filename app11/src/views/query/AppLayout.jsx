@@ -4,6 +4,8 @@ import {Affix} from 'antd' ;
 import 'src/styles/common.css'; 
 import QuerySection from './QuerySection.jsx' ;
 import MainContent from './MainContent.jsx' ;
+import 'src/styles/panel.css' ;
+import 'src/styles/brandQuery.css' ;
 
 export default class AppLayout extends Component {
     constructor(props){

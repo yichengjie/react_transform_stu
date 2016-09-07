@@ -1,16 +1,6 @@
 import React,{Component} from 'react' ;
 import { Collapse,Button,Row, Col ,Card } from 'antd';
-const Panel = Collapse.Panel;
-
-function callback(key) {
-  console.log(key);
-}
-
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
+import BrandGroupItem from './BrandGroupItem.jsx' ;
 
 class MainContent extends Component{
     render(){
@@ -22,10 +12,7 @@ class MainContent extends Component{
                     <Button >截止</Button>
                     <Button >删除</Button>
                 </div>
-                <Card >
-                    
-                    <p>{text}</p>
-                </Card>
+                <BrandGroupItem />
             </div>
         ) ;
     }
