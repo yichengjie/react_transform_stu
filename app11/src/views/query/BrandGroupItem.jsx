@@ -1,10 +1,8 @@
 import React,{Component} from 'react' ;
-import {Checkbox,Button} from 'antd' ;
+import {Checkbox,Button,Icon} from 'antd' ;
 import BrandItem from './BrandItem.jsx' ;
 
-
 export default class BrandGroupItem extends Component{
-
     render(){
         return (
             <div className="panel panel-default brand_group">
@@ -14,10 +12,12 @@ export default class BrandGroupItem extends Component{
                             <div className="brand_title">
                                 <span className="left text-info">
                                     <Checkbox name ="checkAll"/>
-                                    <i className="glyphicon glyphicon-upload marginL10" data-name="showHideBody"></i>
+                                    <span className="marginR5"></span>
+                                    <Icon type ="circle-o-up"/>
+                                    <span className="marginR5"></span>
                                     asgui_ca test
-                                    <i className="glyphicon glyphicon-info-sign pull-right descrImg" data-toggle="tooltip"
-                                    data-placement="top"  title="描述信息为空"></i>
+                                    <span className="marginR5"></span>
+                                    <Icon type ="question-circle-o"/>
                                 </span>
                                 <span className="right">
                                     <i className="glyphicon glyphicon-pencil marginR10 myhand"></i>
@@ -35,7 +35,12 @@ export default class BrandGroupItem extends Component{
                     </div>
                 </div>
                 <div className="panel-body">
-                    <BrandItem />
+                    <ul>
+                        <BrandItem/>
+                        <BrandItem/>
+                        <BrandItem/>
+                        <BrandItem/>
+                    </ul>
                 </div>
             </div>
         ) ;

@@ -92,6 +92,7 @@
 }
 
 .brand_list{
+    display: block;
     height: 80px;
     box-sizing: border-box;
     vertical-align: middle;
