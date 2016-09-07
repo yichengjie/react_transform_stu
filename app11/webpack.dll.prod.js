@@ -1,4 +1,9 @@
 "use strict"
+/**
+ * webpack.DllPlugin 的选项中， path 是manifest文件的输出路径；
+ * name 是dll暴露的对象名，要跟 output.library 保持一致； 
+ * context 是解析包路径的上下文，这个要跟接下来配置的dll user一致。
+ */
 let path = require('path');
 let webpack = require('webpack');
 
