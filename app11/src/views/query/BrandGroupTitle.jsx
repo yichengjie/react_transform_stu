@@ -10,11 +10,12 @@ class BrandGroupTitle extends Component{
                     <Icon type ="circle-o-up"/>
                     <span className="marginR5"></span>
                     asgui_ca test
-                    <span className="marginR5"></span>
-                    <Icon type ="question-circle-o"/>
+                    <span className="marginR15"></span>
+                    <Icon type ="question-circle-o" />
                 </span>
                 <span className="right">
-                    <i className="glyphicon glyphicon-pencil marginR10 myhand"></i>
+                    <Icon type="edit" className="myhand" title="编辑"/>
+                    <span className="marginR10"></span>
                     <Button size="small">新建品牌</Button>
                 </span>
                 <span className="center">
