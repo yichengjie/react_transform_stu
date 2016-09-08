@@ -18,7 +18,11 @@ class BaseTableComp extends Component{
         this.setState({selectedId:""}) ;
     }
     handleClickTr(id){
-      this.setState({selectedId:id}) ;
+        if(id&&id.length>0){
+            this.setState({selectedId:id}) ;
+        }else{
+            this.setState({selectedId:""}) ; 
+        }
     }
     updateSubTableFieldValue(name,event){
         let tbname = this.props.tbname ;
@@ -29,7 +33,7 @@ class BaseTableComp extends Component{
     }
     render(){
         return (
-         <div className="table_layout"  style={{width:"500px"}}>
+         <div className="table_layout"  style={{width:"100%"}}>
             <table>
                 <thead>
                     {this.renderThead()}

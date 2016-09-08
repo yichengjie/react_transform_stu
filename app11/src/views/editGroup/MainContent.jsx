@@ -86,13 +86,12 @@ class MainContent extends Component{
                                     <span className="two_input_blank"></span>
                                     <DatePicker style={{width:"49%"}}/>
                                 </FormItem>
-
                                 <Row>
-                                    <Col span={3}>
-                                        发布
+                                    <Col span={3} className="ant-form-item-label">
+                                        <label> 发布</label>
                                     </Col>
-                                    <Col span={12} offset={4}>
-                                        <Table183 tbname ="list183" list = {[1,2,3]}/>
+                                    <Col span={12} >
+                                         <Table183 tbname ="list183" list = {[1,2,3]}/>
                                     </Col>
                                 </Row>
 
