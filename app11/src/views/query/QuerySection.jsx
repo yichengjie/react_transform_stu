@@ -1,6 +1,6 @@
 import React,{Component} from 'react' ;
 import { Checkbox ,Input,Button,DatePicker } from 'antd';
-import 'src/styles/querySection.css' ;
+
 //const CheckboxGroup = Checkbox.Group;
 var classNames = require('classnames');
 const two_input ={
@@ -60,7 +60,7 @@ export default class IndexLayout extends Component {
                     <span className="marginL10 marginR5"></span>
                     <Checkbox onChange ={this.showMoreSwitch}>更多</Checkbox>
                     <span className="pull-right marginR15">
-                        <Button type="primary">查询</Button>
+                        <Button type="primary" size ="small">查询</Button>
                     </span>
                 </div>
                 {this.renderMoreQuerySection()}

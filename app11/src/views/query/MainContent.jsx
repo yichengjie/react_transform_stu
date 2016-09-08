@@ -7,10 +7,10 @@ class MainContent extends Component{
         return (
             <div className ="container">
                 <div className="nav_oper_btns">
-                    <Button type ="primary" >新建品牌集</Button>
-                    <Button  >发布</Button>
-                    <Button >截止</Button>
-                    <Button >删除</Button>
+                    <Button type ="primary" size="small">新建品牌集</Button>
+                    <Button size="small" >发布</Button>
+                    <Button size="small">截止</Button>
+                    <Button size="small">删除</Button>
                 </div>
                 <BrandGroupPanel />
                 <BrandGroupPanel />
