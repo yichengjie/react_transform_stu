@@ -1,6 +1,9 @@
 import React,{Component} from 'react' ;
-import {Card,Input, Select,Radio, Checkbox, Button, DatePicker, InputNumber, Form ,Row, Col} from 'antd';
+import {Card,Input, Select,Radio, Checkbox, Button, 
+    DatePicker, InputNumber, Form ,Row, Col,Icon} from 'antd';
 import Table183 from './Table183.jsx' ;
+import ChooseBox1 from './ChooseBox1.jsx' ;
+import ChooseBox2 from './ChooseBox2.jsx' ;
 const Option = Select.Option;
 const createForm = Form.create;
 const FormItem = Form.Item;
@@ -66,7 +69,7 @@ class MainContent extends Component{
                                     <label> 运价</label>
                                 </Col>
                                 <Col span={12} >
-                                    <Table183 tbname ="list183" list = {[1,2,3]}/>
+                                    <Table183 tbname ="list183" list = {[{id:1},{id:2},{id:3}]}/>
                                 </Col>
                             </Row>
                         </div>
@@ -77,15 +80,11 @@ class MainContent extends Component{
                      <div className="content_layout">
                         <span className="left">附加服务配置</span>
                         <div className="right">
-                            
-                            
-                            <FormItem
-                                {...formItemLayout}
-                                label="序列号">
-                                <InputNumber  style={{ width: '100%' }}/>
-                            </FormItem>
-
-                            
+                            <ChooseBox1/>
+                             <div className="service_choose_toRight">
+                               <Icon type="swap-right" />
+                             </div>
+                             <ChooseBox2/>
                         </div>
                      </div>
                      {/**附加服务配置 end */}
