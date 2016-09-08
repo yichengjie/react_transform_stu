@@ -104,11 +104,9 @@ class BasicDemo extends Component {
                 <Input {...propertyTaxProps} min={0} />
             </FormItem>
             <Row>
-              <Col>
                   <Col span={12} offset={4}>
                       <Table196 tbname ="list196"/>
                   </Col>
-              </Col>
            </Row>
       </Card>
     ) ;
