@@ -1,6 +1,10 @@
 import React,{Component} from 'react' ;
 import {Checkbox,Button,Icon} from 'antd' ;
 class BrandGroupTitle extends Component{
+
+    toNewBrandUI(event){
+        window.location.href = 'edit.html' ;
+    }
     render(){
         return (
             <div className="brand_title">
@@ -16,7 +20,7 @@ class BrandGroupTitle extends Component{
                 <span className="right">
                     <Icon type="edit" className="myhand" title="编辑"/>
                     <span className="marginR10"></span>
-                    <Button size="small">新建品牌</Button>
+                    <Button size="small" onClick ={this.toNewBrandUI}>新建品牌</Button>
                 </span>
                 <span className="center">
                     <span>序列号：8776559</span>
