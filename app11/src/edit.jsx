@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import store from './stores/store.js' ;
 import {Provider} from 'react-redux' ;
-import AppLayout from './views/query/AppLayout.jsx' ;
+import AppLayout from './views/edit/AppLayout.jsx' ;
 
 ReactDOM.render(
     <Provider store={store}>

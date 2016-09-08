@@ -22,6 +22,7 @@ const vendors = [
 module.exports= {
   entry:{
     index:['babel-polyfill','./src/index.jsx'],
+    edit:'./src/edit.jsx',
     vendor:vendors
   },
   output: {

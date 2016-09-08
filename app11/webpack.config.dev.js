@@ -9,11 +9,12 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports= {
   entry:{
-    index:['./src/index.jsx']
+    index:['./src/index.jsx'],
+    edit:'./src/edit.jsx'
   },
   output: {
     path: BUILD_PATH,
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   //enable dev source map
   devtool: 'source-map',
@@ -59,7 +60,13 @@ module.exports= {
   plugins: [
     new HtmlwebpackPlugin({
       filename: 'index.html',
-      template: './src/template/index.html'
+      template: './src/template/index.html',
+      chunks: ['index']
+    }),
+    new HtmlwebpackPlugin({
+      filename: 'edit.html',
+      template: './src/template/index.html',
+      chunks: ['edit']
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
