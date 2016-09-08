@@ -57,3 +57,39 @@ marginL5{
 /*.pull-right{
     float: right;
 }*/
+
+.content_layout{
+    display: block;
+    margin-top: 10px;
+}
+.content_layout .left{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 9%;
+    float: left;
+}
+.content_layout .right{
+    display: inline-block;
+    box-sizing: border-box;
+    background-color:#F2F4F7;
+    border:1px solid #C8D2DD;
+    border-radius:3px;
+    width: 90%;
+    padding:15px 0px 5px;
+}
+.content_layout:after{
+    clear: both;
+    display: table;
+    content: '';
+}
+
+.two_input{
+    display: inline-block;
+    width: 49%;
+}
+
+.two_input_blank{
+    display: inline-block;
+    width: 2%;
+    content: ' '
+}
