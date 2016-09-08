@@ -11,7 +11,8 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 module.exports= {
   entry:{
     index:['./src/index.jsx'],
-    edit:'./src/edit.jsx'
+    edit:'./src/edit.jsx',
+    editGroup:'./src/editGroup.jsx'
   },
   output: {
     path: BUILD_PATH,
@@ -74,6 +75,11 @@ module.exports= {
       filename: 'edit.html',
       template: './src/template/index.html',
       chunks: ['edit']
+    }),
+    new HtmlwebpackPlugin({
+      filename: 'editGroup.html',
+      template: './src/template/index.html',
+      chunks: ['editGroup']
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
