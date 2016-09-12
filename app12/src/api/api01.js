@@ -15,7 +15,7 @@ export function initBrandGroupPage (){
         } ;
         setTimeout(function(){
             resolve(data);
-        },1000)
+        },5000)
     });
     return promise ;
 }

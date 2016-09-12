@@ -5,6 +5,8 @@ import Table183 from './Table183.jsx' ;
 import {SUBMITFROM_EVENT_EDITGROUP,RESETFROM_EVENT_EDITGROUP} from 'src/constants/pubSubEvent.js' ; 
 import PubSub from 'pubsub-js' ;
 import {initBrandGroupPage} from 'src/api/api01.js' ;
+import NProgress from 'nprogress' ;
+
 
 const Option = Select.Option;
 const createForm = Form.create;
@@ -25,6 +27,7 @@ class MainContent extends Component{
         super(props) ;
         this.handleSubmit = this.handleSubmit.bind(this) ;
         this.initPageValue = this.initPageValue.bind(this) ;
+        NProgress.configure({ parent: '.container' });
     }
     //提交表单
     handleSubmit(msg,data) {
@@ -35,8 +38,10 @@ class MainContent extends Component{
     }
 
     componentDidMount(){
+        //NProgress.done();
         var token = PubSub.subscribe(SUBMITFROM_EVENT_EDITGROUP, this.handleSubmit );
         this.token = token ;
+        NProgress.start();
         this.initPageValue() ;
     }
 
@@ -44,7 +49,8 @@ class MainContent extends Component{
     initPageValue(){
         let _self = this ;
         initBrandGroupPage().then(function(retData){
-            message.success('初始化数据成功');
+            NProgress.done();
+            //message.success('初始化数据成功');
             //console.info('retData : ' ,retData) ;
             let {sequenceNum,brandGroupName,saleStartDate,saleEndDate,
                 loc1Type,loc1Value,loc2Type,loc2Value,geoLimit,travelStartDate,
@@ -62,6 +68,7 @@ class MainContent extends Component{
 
     componentWillUnmount(){
         PubSub.unsubscribe( this.token );
+        NProgress.remove();
     }
     render(){
         const { getFieldProps } = this.props.form ;
