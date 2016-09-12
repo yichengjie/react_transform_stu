@@ -1,6 +1,8 @@
 import React,{Component} from 'react' ;
 import {Card,Input, Select, Checkbox, Button, DatePicker, InputNumber, Form ,Row, Col} from 'antd';
 import Table183 from './Table183.jsx' ;
+import {SUBMITFROM_EVENT_EDITGROUP,RESETFROM_EVENT_EDITGROUP} from 'src/constants/pubSubEvent.js' ; 
+
 const Option = Select.Option;
 const createForm = Form.create;
 const FormItem = Form.Item;
@@ -15,9 +17,19 @@ const options = [
   { label: '双向', value: 'Orange' },
 ];
 class MainContent extends Component{
+    constructor(props){
+        super(props) ;
+    }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log('收到表单值：', this.props.form.getFieldsValue());
+    }
     render(){
-        const { getFieldProps } = this.props.form;
+        const { getFieldProps } = this.props.form ;
+        let sequenceNumField = getFieldProps('sequenceNum',{
+            initialValue:''
+        }) ;
         return (
             <div className ="container">
                 <Form horizontal >
@@ -28,7 +40,7 @@ class MainContent extends Component{
                                 <FormItem
                                   {...formItemLayout}
                                   label="序列号">
-                                    <InputNumber  style={{ width: '100%' }}/>
+                                    <InputNumber {...sequenceNumField} style={{ width: '100%' }}/>
                                 </FormItem>
                                 <FormItem
                                   {...formItemLayout}
