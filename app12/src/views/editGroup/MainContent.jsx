@@ -93,6 +93,15 @@ class MainContent extends Component{
         }
     }
 
+    checkSaleEndDate(rule, value, callback){
+         if (!value) {
+            callback();
+        } else {
+             callback([new Error('结束日期必须大于起始日期')]);
+        }
+    }
+
+
     render(){
         const { getFieldProps,getFieldError, isFieldValidating } = this.props.form ;
         let sequenceNumField = getFieldProps('sequenceNum',{
@@ -110,10 +119,16 @@ class MainContent extends Component{
         }) ;
         let saleStartDateField = getFieldProps('saleStartDate',{
             initialValue:'',
-
+            rules: [
+                { required: true },
+            ],
         }) ;
         let saleEndDateField = getFieldProps('saleEndDate',{
-            initialValue:''
+            initialValue:'',
+            rules: [
+                { required: true },
+                {validator:this.checkSaleEndDate}
+            ],
         }) ;
         let loc1TypeField = getFieldProps('loc1Type') ;
         let loc1ValueField = getFieldProps('loc1Value') ;
@@ -144,7 +159,9 @@ class MainContent extends Component{
                                     <Input  {...brandGroupNameField} />
                                 </FormItem>
 
-                                 <FormItem {...formItemLayout} label="销售日期" >
+                                 <FormItem {...formItemLayout} label="销售日期"
+                                    help={  [...(getFieldError('saleStartDate') || []),...(getFieldError('saleEndDate') || [])] .join(', ') }
+                                  >
                                     <DatePicker {...saleStartDateField} style={{width:"49%"}}/>
                                     <span className="two_input_blank"></span>
                                     <DatePicker {...saleEndDateField} style={{width:"49%"}} />
