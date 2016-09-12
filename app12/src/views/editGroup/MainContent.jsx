@@ -31,10 +31,6 @@ class MainContent extends Component{
     }
     //提交表单
     handleSubmit(msg,data) {
-        //e.preventDefault();
-        //console.info('msg : ',msg) ;
-        //console.info('data : ' ,data) ;
-        //console.log('收到表单值：', this.props.form.getFieldsValue());
         this.props.form.validateFields((errors, values) => {
             if (!!errors) {
                 console.log('Errors in form!!!');
@@ -83,10 +79,16 @@ class MainContent extends Component{
         if (!value) {
             callback();
         } else {
-            if (value === '123') {
-                callback([new Error('抱歉，该序列号已被占用。')]);
-            } else {
-                callback();
+            if(/^[0-9]{0,}$/.test(value)){
+                setTimeout(function(){
+                    if (value === '12345') {
+                        callback([new Error('抱歉，该序列号已被占用。')]);
+                    } else {
+                        callback();
+                    }
+                },1000) ;
+            }else{
+                callback([new Error('请输入数字。')]);
             }
         }
     }
@@ -101,10 +103,18 @@ class MainContent extends Component{
             ],
         }) ;
         let brandGroupNameField = getFieldProps('brandGroupName',{
+            initialValue:'',
+            rules: [
+                { required: true, min: 5, message: '序列号至少为 5 个字符' },
+            ],
+        }) ;
+        let saleStartDateField = getFieldProps('saleStartDate',{
+            initialValue:'',
+
+        }) ;
+        let saleEndDateField = getFieldProps('saleEndDate',{
             initialValue:''
         }) ;
-        let saleStartDateField = getFieldProps('saleStartDate') ;
-        let saleEndDateField = getFieldProps('saleEndDate') ;
         let loc1TypeField = getFieldProps('loc1Type') ;
         let loc1ValueField = getFieldProps('loc1Value') ;
         let loc2TypeField = getFieldProps('loc2Type') ;
@@ -123,7 +133,10 @@ class MainContent extends Component{
                             <span className="left">必填项</span>
                             <div className="right">
 
-                                <FormItem {...formItemLayout} label="序列号">
+                                <FormItem {...formItemLayout} label="序列号" 
+                                    help={isFieldValidating('sequenceNum') ? '校验中...' : (getFieldError('sequenceNum') || []).join(', ')}
+                                    hasFeedback
+                                >
                                     <Input {...sequenceNumField} style={{ width: '100%' }}/>
                                 </FormItem>
 
