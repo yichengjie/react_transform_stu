@@ -86,8 +86,9 @@ class MainContent extends Component{
             <div className ="container">
                 <Form horizontal >
                     <Card >
+                        {/**必填项 start */}
                         <div className="content_layout">
-                            <span className="left">选填项</span>
+                            <span className="left">必填项</span>
                             <div className="right">
 
                                 <FormItem {...formItemLayout} label="序列号">
@@ -133,7 +134,9 @@ class MainContent extends Component{
                                 </FormItem>
                             </div>
                         </div>
-
+                         {/**必填项 end */}
+                        
+                        {/**选填项 start */}
                         <div className="content_layout">
                             <span className="left">选填项</span>
                             <div className="right">
@@ -159,6 +162,7 @@ class MainContent extends Component{
 
                             </div>
                         </div>
+                         {/**选填项 end */}
                     </Card>
                 </Form>
             </div>
