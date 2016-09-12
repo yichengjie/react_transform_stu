@@ -32,9 +32,17 @@ class MainContent extends Component{
     //提交表单
     handleSubmit(msg,data) {
         //e.preventDefault();
-        console.info('msg : ',msg) ;
-        console.info('data : ' ,data) ;
-        console.log('收到表单值：', this.props.form.getFieldsValue());
+        //console.info('msg : ',msg) ;
+        //console.info('data : ' ,data) ;
+        //console.log('收到表单值：', this.props.form.getFieldsValue());
+        this.props.form.validateFields((errors, values) => {
+            if (!!errors) {
+                console.log('Errors in form!!!');
+                return;
+            }
+            console.log('Submit!!!');
+            console.log(values);
+        });
     }
 
     componentDidMount(){
@@ -70,10 +78,27 @@ class MainContent extends Component{
         PubSub.unsubscribe( this.token );
         NProgress.remove();
     }
+
+    sequenceNumExists(rule, value, callback) {
+        if (!value) {
+            callback();
+        } else {
+            if (value === '123') {
+                callback([new Error('抱歉，该序列号已被占用。')]);
+            } else {
+                callback();
+            }
+        }
+    }
+
     render(){
-        const { getFieldProps } = this.props.form ;
+        const { getFieldProps,getFieldError, isFieldValidating } = this.props.form ;
         let sequenceNumField = getFieldProps('sequenceNum',{
-            initialValue:''
+            initialValue:'',
+            rules: [
+                { required: true, min: 5, message: '序列号至少为 5 个字符' },
+                { validator: this.sequenceNumExists },
+            ],
         }) ;
         let brandGroupNameField = getFieldProps('brandGroupName',{
             initialValue:''
@@ -99,7 +124,7 @@ class MainContent extends Component{
                             <div className="right">
 
                                 <FormItem {...formItemLayout} label="序列号">
-                                    <InputNumber {...sequenceNumField} style={{ width: '100%' }}/>
+                                    <Input {...sequenceNumField} style={{ width: '100%' }}/>
                                 </FormItem>
 
                                 <FormItem {...formItemLayout}  label="品牌集名称">
