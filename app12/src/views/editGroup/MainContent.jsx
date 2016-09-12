@@ -6,11 +6,6 @@ import {SUBMITFROM_EVENT_EDITGROUP,RESETFROM_EVENT_EDITGROUP} from 'src/constant
 import PubSub from 'pubsub-js' ;
 import {initBrandGroupPage} from 'src/api/api01.js' ;
 
-
-notification.config({
-  top: 100,
-});
-
 const Option = Select.Option;
 const createForm = Form.create;
 const FormItem = Form.Item;
@@ -24,8 +19,6 @@ const options = [
   { label: '区域2→区域1', value: 'Pear' },
   { label: '双向', value: 'Orange' },
 ];
-
-
 
 class MainContent extends Component{
     constructor(props){
@@ -49,29 +42,20 @@ class MainContent extends Component{
 
     //初始化页面
     initPageValue(){
-        /**
-         * notification[type]({
-              message: '这是标题',
-              description: '这是提示框的文案这是提示框示框的文案这是提示是提示框的文案这是提示框的文案',
-           });
-         */
         let _self = this ;
         initBrandGroupPage().then(function(retData){
-            // notification.success({
-            //     message:"成功",
-            //     description:"初始化数据成功"
-            // }) ;
             message.success('初始化数据成功');
             //console.info('retData : ' ,retData) ;
+            let {sequenceNum,brandGroupName,saleStartDate,saleEndDate,
+                loc1Type,loc1Value,loc2Type,loc2Value,geoLimit,travelStartDate,
+                travelEndDate} = retData ;
             _self.props.form.setFieldsValue({
-                ...retData
+               sequenceNum,brandGroupName,saleStartDate,saleEndDate,
+                loc1Type,loc1Value,loc2Type,loc2Value,geoLimit,travelStartDate,
+                travelEndDate
             });
         },function(err){
             console.info('err : ',err) ;
-            // notification.error({
-            //     message:"失败",
-            //     description:"初始化数据失败"
-            // }) ;
             message.error('初始化数据失败') ;
         }) ;
     }
@@ -105,26 +89,22 @@ class MainContent extends Component{
                         <div className="content_layout">
                             <span className="left">选填项</span>
                             <div className="right">
-                                <FormItem
-                                  {...formItemLayout}
-                                  label="序列号">
+
+                                <FormItem {...formItemLayout} label="序列号">
                                     <InputNumber {...sequenceNumField} style={{ width: '100%' }}/>
                                 </FormItem>
-                                <FormItem
-                                  {...formItemLayout}
-                                  label="品牌集名称">
+
+                                <FormItem {...formItemLayout}  label="品牌集名称">
                                     <Input  {...brandGroupNameField} />
                                 </FormItem>
-                                 <FormItem
-                                  {...formItemLayout}
-                                  label="销售日期" >
+
+                                 <FormItem {...formItemLayout} label="销售日期" >
                                     <DatePicker {...saleStartDateField} style={{width:"49%"}}/>
                                     <span className="two_input_blank"></span>
                                     <DatePicker {...saleEndDateField} style={{width:"49%"}} />
                                 </FormItem>
-                                 <FormItem
-                                  {...formItemLayout}
-                                  label="区域1" >
+
+                                 <FormItem {...formItemLayout}  label="区域1" >
                                     <Select {...loc1TypeField} placeholder="Please select a country" style={{ width: '49%' }}>
                                         <Option value="china">China</Option>
                                         <Option value="use">U.S.A</Option>
@@ -135,9 +115,8 @@ class MainContent extends Component{
                                     <span className="two_input_blank"></span>
                                     <Input {...loc1ValueField} style={{width:"49%"}}/>
                                 </FormItem>
-                                <FormItem
-                                  {...formItemLayout}
-                                  label="区域2" >
+
+                                <FormItem {...formItemLayout} label="区域2" >
                                     <Select {...loc2TypeField} placeholder="Please select a country" style={{ width: '49%' }}>
                                         <Option value="china">China</Option>
                                         <Option value="use">U.S.A</Option>
@@ -148,9 +127,8 @@ class MainContent extends Component{
                                     <span className="two_input_blank"></span>
                                     <Input {...loc2ValueField} style={{width:"49%"}}/>
                                 </FormItem>
-                                <FormItem
-                                  {...formItemLayout}
-                                  label="区域限制">
+
+                                <FormItem {...formItemLayout}  label="区域限制">
                                     <CheckboxGroup {...geoLimitField} options={options} />
                                 </FormItem>
                             </div>
@@ -159,13 +137,13 @@ class MainContent extends Component{
                         <div className="content_layout">
                             <span className="left">选填项</span>
                             <div className="right">
-                                <FormItem
-                                  {...formItemLayout}
-                                  label="旅行日期" >
+                                
+                                <FormItem {...formItemLayout}  label="旅行日期" >
                                     <DatePicker {...travelStartDateField} style={{width:"49%"}}/>
                                     <span className="two_input_blank"></span>
                                     <DatePicker {...travelEndDateField} style={{width:"49%"}}/>
                                 </FormItem>
+                                
                                 <Row>
                                     <Col span={3} className="ant-form-item-label">
                                         <label> 发布</label>
@@ -175,19 +153,18 @@ class MainContent extends Component{
                                     </Col>
                                 </Row>
 
-                                <FormItem
-                                  {...formItemLayout}
-                                  label="描述" >
+                                <FormItem {...formItemLayout} label="描述" >
                                     <Input type="textarea" rows={4} />
                                 </FormItem>
+
                             </div>
                         </div>
-
                     </Card>
                 </Form>
             </div>
         ) ;
     }
 }
+
 MainContent = createForm()(MainContent);
 export default MainContent ;
