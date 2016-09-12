@@ -1,9 +1,15 @@
 import React,{Component} from 'react' ;
-import {Card,Input, Select, Checkbox, Button, DatePicker, InputNumber, Form ,Row, Col} from 'antd';
+import {Card,Input, Select, Checkbox, Button, notification ,message,
+    DatePicker, InputNumber, Form ,Row, Col} from 'antd';
 import Table183 from './Table183.jsx' ;
 import {SUBMITFROM_EVENT_EDITGROUP,RESETFROM_EVENT_EDITGROUP} from 'src/constants/pubSubEvent.js' ; 
 import PubSub from 'pubsub-js' ;
 import {initBrandGroupPage} from 'src/api/api01.js' ;
+
+
+notification.config({
+  top: 100,
+});
 
 const Option = Select.Option;
 const createForm = Form.create;
@@ -43,14 +49,30 @@ class MainContent extends Component{
 
     //初始化页面
     initPageValue(){
+        /**
+         * notification[type]({
+              message: '这是标题',
+              description: '这是提示框的文案这是提示框示框的文案这是提示是提示框的文案这是提示框的文案',
+           });
+         */
         let _self = this ;
         initBrandGroupPage().then(function(retData){
-            console.info('retData : ' ,retData) ;
+            // notification.success({
+            //     message:"成功",
+            //     description:"初始化数据成功"
+            // }) ;
+            message.success('初始化数据成功');
+            //console.info('retData : ' ,retData) ;
             _self.props.form.setFieldsValue({
                 ...retData
             });
         },function(err){
             console.info('err : ',err) ;
+            // notification.error({
+            //     message:"失败",
+            //     description:"初始化数据失败"
+            // }) ;
+            message.error('初始化数据失败') ;
         }) ;
     }
 
