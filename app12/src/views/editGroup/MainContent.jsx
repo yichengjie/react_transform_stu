@@ -160,7 +160,8 @@ class MainContent extends Component{
                                 </FormItem>
 
                                  <FormItem {...formItemLayout} label="销售日期"
-                                    help={  [...(getFieldError('saleStartDate') || []),...(getFieldError('saleEndDate') || [])] .join(', ') }
+                                    //help={  [...(getFieldError('saleStartDate') || []),...(getFieldError('saleEndDate') || [])] .join(', ') }
+                                    help={  (getFieldError('saleEndDate') || []).join(', ') }
                                   >
                                     <DatePicker {...saleStartDateField} style={{width:"49%"}}/>
                                     <span className="two_input_blank"></span>
