@@ -2,7 +2,7 @@ import React,{Component} from 'react' ;
 import {Card,Input, Select, Checkbox, Button, DatePicker, InputNumber, Form ,Row, Col} from 'antd';
 import Table183 from './Table183.jsx' ;
 import {SUBMITFROM_EVENT_EDITGROUP,RESETFROM_EVENT_EDITGROUP} from 'src/constants/pubSubEvent.js' ; 
-import PubSub from 'PubSub' ;
+import PubSub from 'pubsub-js' ;
 const Option = Select.Option;
 const createForm = Form.create;
 const FormItem = Form.Item;
@@ -19,11 +19,21 @@ const options = [
 class MainContent extends Component{
     constructor(props){
         super(props) ;
+        this.handleSubmit = this.handleSubmit.bind(this) ;
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit(param) {
+        //e.preventDefault();
+        console.info('param : ',param) ;
         console.log('收到表单值：', this.props.form.getFieldsValue());
+    }
+
+    componentDidMount(){
+        var token = PubSub.subscribe(SUBMITFROM_EVENT_EDITGROUP, this.handleSubmit );
+        this.token = token ;
+    }
+    componentWillUnmount(){
+        PubSub.unsubscribe( this.token );
     }
     render(){
         const { getFieldProps } = this.props.form ;
