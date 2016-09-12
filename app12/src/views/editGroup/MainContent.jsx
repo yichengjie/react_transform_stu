@@ -3,6 +3,8 @@ import {Card,Input, Select, Checkbox, Button, DatePicker, InputNumber, Form ,Row
 import Table183 from './Table183.jsx' ;
 import {SUBMITFROM_EVENT_EDITGROUP,RESETFROM_EVENT_EDITGROUP} from 'src/constants/pubSubEvent.js' ; 
 import PubSub from 'pubsub-js' ;
+import {initBrandGroupPage} from 'src/api/api01.js' ;
+
 const Option = Select.Option;
 const createForm = Form.create;
 const FormItem = Form.Item;
@@ -16,10 +18,14 @@ const options = [
   { label: '区域2→区域1', value: 'Pear' },
   { label: '双向', value: 'Orange' },
 ];
+
+
+
 class MainContent extends Component{
     constructor(props){
         super(props) ;
         this.handleSubmit = this.handleSubmit.bind(this) ;
+        this.initPageValue = this.initPageValue.bind(this) ;
     }
     //提交表单
     handleSubmit(msg,data) {
@@ -32,7 +38,22 @@ class MainContent extends Component{
     componentDidMount(){
         var token = PubSub.subscribe(SUBMITFROM_EVENT_EDITGROUP, this.handleSubmit );
         this.token = token ;
+        this.initPageValue() ;
     }
+
+    //初始化页面
+    initPageValue(){
+        let _self = this ;
+        initBrandGroupPage().then(function(retData){
+            console.info('retData : ' ,retData) ;
+            _self.props.form.setFieldsValue({
+                ...retData
+            });
+        },function(err){
+            console.info('err : ',err) ;
+        }) ;
+    }
+
     componentWillUnmount(){
         PubSub.unsubscribe( this.token );
     }
