@@ -21,10 +21,11 @@ class MainContent extends Component{
         super(props) ;
         this.handleSubmit = this.handleSubmit.bind(this) ;
     }
-
-    handleSubmit(param) {
+    //提交表单
+    handleSubmit(msg,data) {
         //e.preventDefault();
-        console.info('param : ',param) ;
+        console.info('msg : ',msg) ;
+        console.info('data : ' ,data) ;
         console.log('收到表单值：', this.props.form.getFieldsValue());
     }
 
@@ -40,6 +41,19 @@ class MainContent extends Component{
         let sequenceNumField = getFieldProps('sequenceNum',{
             initialValue:''
         }) ;
+        let brandGroupNameField = getFieldProps('brandGroupName',{
+            initialValue:''
+        }) ;
+        let saleStartDateField = getFieldProps('saleStartDate') ;
+        let saleEndDateField = getFieldProps('saleEndDate') ;
+        let loc1TypeField = getFieldProps('loc1Type') ;
+        let loc1ValueField = getFieldProps('loc1Value') ;
+        let loc2TypeField = getFieldProps('loc2Type') ;
+        let loc2ValueField = getFieldProps('loc2Value') ;
+        let geoLimitField = getFieldProps('geoLimit',{
+            initialValue:['Pear','Orange']
+        }) ;
+
         return (
             <div className ="container">
                 <Form horizontal >
@@ -55,19 +69,19 @@ class MainContent extends Component{
                                 <FormItem
                                   {...formItemLayout}
                                   label="品牌集名称">
-                                    <Input  />
+                                    <Input  {...brandGroupNameField} />
                                 </FormItem>
                                  <FormItem
                                   {...formItemLayout}
                                   label="销售日期" >
-                                    <DatePicker style={{width:"49%"}}/>
+                                    <DatePicker {...saleStartDateField} style={{width:"49%"}}/>
                                     <span className="two_input_blank"></span>
-                                    <DatePicker style={{width:"49%"}} />
+                                    <DatePicker {...saleEndDateField} style={{width:"49%"}} />
                                 </FormItem>
                                  <FormItem
                                   {...formItemLayout}
                                   label="区域1" >
-                                    <Select placeholder="Please select a country" style={{ width: '49%' }}>
+                                    <Select {...loc1TypeField} placeholder="Please select a country" style={{ width: '49%' }}>
                                         <Option value="china">China</Option>
                                         <Option value="use">U.S.A</Option>
                                         <Option value="japan">Japan</Option>
@@ -75,12 +89,12 @@ class MainContent extends Component{
                                         <Option value="Thailand">Thai</Option>
                                     </Select>
                                     <span className="two_input_blank"></span>
-                                    <Input style={{width:"49%"}}/>
+                                    <Input {...loc1ValueField} style={{width:"49%"}}/>
                                 </FormItem>
                                 <FormItem
                                   {...formItemLayout}
                                   label="区域2" >
-                                    <Select placeholder="Please select a country" style={{ width: '49%' }}>
+                                    <Select {...loc2TypeField} placeholder="Please select a country" style={{ width: '49%' }}>
                                         <Option value="china">China</Option>
                                         <Option value="use">U.S.A</Option>
                                         <Option value="japan">Japan</Option>
@@ -88,12 +102,12 @@ class MainContent extends Component{
                                         <Option value="Thailand">Thai</Option>
                                     </Select>
                                     <span className="two_input_blank"></span>
-                                    <Input style={{width:"49%"}}/>
+                                    <Input {...loc2ValueField} style={{width:"49%"}}/>
                                 </FormItem>
                                 <FormItem
                                   {...formItemLayout}
                                   label="区域限制">
-                                    <CheckboxGroup options={options} defaultValue={['Pear']}  />
+                                    <CheckboxGroup {...geoLimitField} options={options} />
                                 </FormItem>
                             </div>
                         </div>
