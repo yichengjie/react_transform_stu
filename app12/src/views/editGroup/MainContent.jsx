@@ -53,7 +53,8 @@ class MainContent extends Component{
         let geoLimitField = getFieldProps('geoLimit',{
             initialValue:['Pear','Orange']
         }) ;
-
+        let travelStartDateField = getFieldProps('travelStartDate') ;
+        let travelEndDateField = getFieldProps('travelEndDate') ;
         return (
             <div className ="container">
                 <Form horizontal >
@@ -118,9 +119,9 @@ class MainContent extends Component{
                                 <FormItem
                                   {...formItemLayout}
                                   label="旅行日期" >
-                                    <DatePicker style={{width:"49%"}}/>
+                                    <DatePicker {...travelStartDateField} style={{width:"49%"}}/>
                                     <span className="two_input_blank"></span>
-                                    <DatePicker style={{width:"49%"}}/>
+                                    <DatePicker {...travelEndDateField} style={{width:"49%"}}/>
                                 </FormItem>
                                 <Row>
                                     <Col span={3} className="ant-form-item-label">
