@@ -3,15 +3,15 @@ export function initBrandGroupPage (){
         let data = {
             sequenceNum:"11",
             brandGroupName:"hi",
-            saleStartDate:"2016-09-02",
-            saleEndDate:"2016-09-05",
+            saleStartDate:new Date("2016/09/02"),
+            saleEndDate:new Date("2016/09/05"),
             loc1Type:"use",
             loc1Value:"11",
             loc2Type:"use",
             loc2Value:"22",
             geoLimit:['Apple'],
-            travelStartDate:"2016-09-06",
-            travelEndDate:"2016-09-07"
+            travelStartDate:new Date("2016/09/06"),
+            travelEndDate:new Date("2016/09/07")
         } ;
         setTimeout(function(){
             resolve(data);
