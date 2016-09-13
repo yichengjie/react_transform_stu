@@ -11,10 +11,10 @@ class Table183 extends BaseTableComp{
     }
     renderTbody(list){
         return list.map((item,index) =>{
-            return <tr key ={item.id}  onClick ={this.handleClickTr.bind(this,item.id)} 
+            return <tr key ={index}  onClick ={this.handleClickTr.bind(this,item.id)} 
                 className = {this.state.selectedId === item.id ? "selected_td" : ""}>
                 <td>
-                    <Input  /> 
+                    <Input name ={'t18301'+index} className="required"/> 
                 </td>
                 <td>
                     <Input type ="text"/>

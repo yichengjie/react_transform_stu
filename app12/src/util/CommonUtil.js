@@ -34,6 +34,11 @@
 		return info ;*/
 		return {} ;
 	}
+
+
+
+
+
 	//判断状态不可编辑，当状态为3的时候不能编辑
 	util.checkStatusIsDisabled = function(status){
 		var flag = false ;
@@ -188,6 +193,42 @@
 	util.isAlphanumericOrStart = function(value){
 		return /^[A-Za-z0-9]{0,}$|^[\*]{1}$/.test(value) ;
 	}
+
+	util.checkGeoLocl = function(value,geoType){
+		var allSameStateFlag = util.checkTypeAndValue(value,geoType) ;
+		if(!allSameStateFlag){
+			return {"flag":false,"msg":"两者同时填写，或不填写"} ;
+		}else{
+			if(geoType&&geoType.length>0){
+				var msgObj = {"A":"区域代码填写有误","C":"城市代码填写有误",
+				"N":"国家代码填写有误","P":"机场代码填写有误","S":"州代码填写有误","Z":"地区代码填写有误"} ;
+				var flag = util.isValidGeoLocal(value,geoType) ;
+				var msgStr = "" ;
+				if(!flag){
+					msgStr = msgObj[geoType] ;
+				}
+				return {"flag":flag,"msg":msgStr} ;
+			}else{//两者都为空的话
+				return {"flag":true,"msg":""} ;
+			}
+		}
+		
+	}
+
+	util.checkTypeAndValue = function(val,type){
+		if(type&&type.length>0){
+			if(val&&val.length>0){
+				return true ;
+			}
+			return false;
+		}else{
+			if(val&&val.length>0){
+				return false;
+			}
+			return true ;
+		}
+    }
+
 
 	util.isValidGeoLocal = function(value,geoType){
 		//{'A':'areacode','C':'citycode','N':'countrycode','P':'airportcode','S':'statecode','Z':'zonecode'

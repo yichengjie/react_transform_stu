@@ -23,6 +23,11 @@ const options = [
   { label: '双向', value: 'Orange' },
 ];
 
+const geoList = [{"name":"选择","value":""},
+				{"name":"大区","value":"A"},{"name":"城市","value":"C"},
+				{"name":"国家","value":"N"},{"name":"机场","value":"P"},
+				{"name":"州","value":"S"},{"name":"区域","value":"Z"}] ;
+
 class MainContent extends Component{
     constructor(props){
         super(props) ;
@@ -30,6 +35,8 @@ class MainContent extends Component{
         this.initPageValue = this.initPageValue.bind(this) ;
         this.checkSaleEndDate = this.checkSaleEndDate.bind(this) ;
         this.checkSaleStartDate = this.checkSaleStartDate.bind(this) ;
+        this.handleChangeLocType = this.handleChangeLocType.bind(this) ;
+        this.checkLoc1Type = this.checkLoc1Type.bind(this) ;
         NProgress.configure({ parent: '.container' });
     }
     //提交表单
@@ -103,7 +110,7 @@ class MainContent extends Component{
             let saleStartDate = this.props.form.getFieldValue('saleStartDate') ;
             let saleEndDate = this.props.form.getFieldValue('saleEndDate') ;
             if(saleStartDate>saleEndDate){
-                callback('结束日期必须大于起始日期');
+                callback([new Error('结束日期必须大于起始日期')]);
             }else{
                 callback();
             }
@@ -112,13 +119,55 @@ class MainContent extends Component{
 
     checkSaleEndDate(rule, value, callback){
         const form = this.props.form;
-         if (!value) {
+        if (value) {
+           form.validateFields(['saleStartDate'], { force: true });
+        } 
+        //这个地方callback一定要调用，不然会一直处理验证中
+        callback();
+    }
+
+    checkLoc1Type(rule, value, callback){
+        let locType = this.props.form.getFieldValue('loc1Type') ;
+        let locValue = this.props.form.getFieldValue('loc1Value') ;
+        let {flag,msg} = CommonUtil.checkGeoLocl(locValue,locType) ;
+        if(!flag){
+            callback(msg);
+        }else{
             callback();
-        } else {
-            form.validateFields(['saleStartDate'], { force: true });
         }
     }
 
+    checkLoc1Value(rule, value, callback){
+        const form = this.props.form;
+        form.validateFields(['loc1Type'], { force: true });
+        callback(); 
+    }
+
+    checkLoc2Type(rule, value, callback){
+        let locType = this.props.form.getFieldValue('loc2Type') ;
+        let locValue = this.props.form.getFieldValue('loc2Value') ;
+        let {flag,msg} = CommonUtil.checkGeoLocl(locValue,locType) ;
+        if(!flag){
+            callback(msg);
+        }else{
+            callback();
+        }
+    }
+
+    checkLoc2Value(rule, value, callback){
+        const form = this.props.form;
+        form.validateFields(['loc2Type'], { force: true });
+        callback(); 
+    }
+
+
+    //当区域type改变的时候，修改区域value值
+    handleChangeLocType(name){
+        let _self = this ;
+        return function(){
+            _self.props.form.setFieldsValue({[name]:""}) ;
+        }
+    }
 
     render(){
         const { getFieldProps,getFieldError, isFieldValidating } = this.props.form ;
@@ -149,15 +198,36 @@ class MainContent extends Component{
                 {validator:this.checkSaleEndDate}
             ],
         }) ;
-        let loc1TypeField = getFieldProps('loc1Type') ;
-        let loc1ValueField = getFieldProps('loc1Value') ;
-        let loc2TypeField = getFieldProps('loc2Type') ;
-        let loc2ValueField = getFieldProps('loc2Value') ;
+        let loc1TypeField = getFieldProps('loc1Type',{
+            onChange:this.handleChangeLocType('loc1Value'),
+            rules:[
+                {validator:this.checkLoc1Type}
+            ]
+        }) ;
+        let loc1ValueField = getFieldProps('loc1Value',{
+            rules:[
+                {validator:this.checkLoc1Value.bind(this)}
+            ]
+        }) ;
+        let loc2TypeField = getFieldProps('loc2Type',{
+            onChange:this.handleChangeLocType('loc2Value'),
+            rules:[
+                {validator:this.checkLoc2Type.bind(this)}
+            ]
+        }) ;
+        let loc2ValueField = getFieldProps('loc2Value',{
+            rules:[
+                {validator:this.checkLoc2Value.bind(this)}
+            ]
+        }) ;
         let geoLimitField = getFieldProps('geoLimit',{
             initialValue:['Pear','Orange']
         }) ;
         let travelStartDateField = getFieldProps('travelStartDate') ;
         let travelEndDateField = getFieldProps('travelEndDate') ;
+        //区域下拉框
+        const geoOptions = geoList.map((opt) => <Option key={opt.value} value ={opt.value}>{opt.name}</Option>);
+
         return (
             <div className ="container">
                 <Form horizontal >
@@ -174,26 +244,21 @@ class MainContent extends Component{
                                     <Input {...sequenceNumField} style={{ width: '100%' }}/>
                                 </FormItem>
 
-                                <FormItem {...formItemLayout}  label="品牌集名称">
+                                <FormItem {...formItemLayout}  label="品牌集名称" hasFeedback>
                                     <Input  {...brandGroupNameField} />
                                 </FormItem>
 
                                  <FormItem {...formItemLayout} label="销售日期"
-                                    //help={  [...(getFieldError('saleStartDate') || []),...(getFieldError('saleEndDate') || [])] .join(', ') }
-                                    help={  (getFieldError('saleStartDate') || []).join(', ') }
-                                  >
+                                    help={  (getFieldError('saleStartDate') || []).join(', ') }>
                                     <DatePicker {...saleStartDateField} style={{width:"49%"}}/>
                                     <span className="two_input_blank"></span>
                                     <DatePicker {...saleEndDateField} style={{width:"49%"}} />
                                 </FormItem>
 
-                                 <FormItem {...formItemLayout}  label="区域1" >
+                                 <FormItem {...formItemLayout}  label="区域1" 
+                                    help={  (getFieldError('loc1Type') || []).join(', ') }>
                                     <Select {...loc1TypeField} placeholder="Please select a country" style={{ width: '49%' }}>
-                                        <Option value="china">China</Option>
-                                        <Option value="use">U.S.A</Option>
-                                        <Option value="japan">Japan</Option>
-                                        <Option value="korean">Korea</Option>
-                                        <Option value="Thailand">Thai</Option>
+                                       {geoOptions}
                                     </Select>
                                     <span className="two_input_blank"></span>
                                     <Input {...loc1ValueField} style={{width:"49%"}}/>
@@ -201,11 +266,7 @@ class MainContent extends Component{
 
                                 <FormItem {...formItemLayout} label="区域2" >
                                     <Select {...loc2TypeField} placeholder="Please select a country" style={{ width: '49%' }}>
-                                        <Option value="china">China</Option>
-                                        <Option value="use">U.S.A</Option>
-                                        <Option value="japan">Japan</Option>
-                                        <Option value="korean">Korea</Option>
-                                        <Option value="Thailand">Thai</Option>
+                                        {geoOptions}
                                     </Select>
                                     <span className="two_input_blank"></span>
                                     <Input {...loc2ValueField} style={{width:"49%"}}/>

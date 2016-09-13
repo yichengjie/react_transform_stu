@@ -25,6 +25,7 @@ module.exports = {
     path:path.resolve( __dirname, './build/dll' ),
     library:"[name]"
   },
+  devtool: 'source-map',
   entry: {
     vendor: vendors,
   },
