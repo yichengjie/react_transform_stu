@@ -53,13 +53,11 @@ class MainContent extends Component{
     }
     //提交表单
     handleSubmit(msg,data) {
+        let jqFlag = this.jq_validator.form() ;
+        console.info('jqFlag : ' + jqFlag) ;
         this.props.form.validateFields((errors, values) => {
             if (!!errors) {
                 console.log('Errors in form!!!');
-                // notification.error({
-                //     message: '失败',
-                //     description: '验证不通过，请更正表单数据后重新提交'
-                // }) ;
                 return;
             }
             notification.success({
@@ -77,6 +75,8 @@ class MainContent extends Component{
         this.token = token ;
         NProgress.start();
         this.initPageValue() ;
+        var validator = $("#myForm").validate({meta:""});
+        this.jq_validator = validator ;
     }
 
     //初始化页面
@@ -310,7 +310,7 @@ class MainContent extends Component{
 
         return (
             <div className ="container">
-                <Form horizontal >
+                <Form id ="myForm" horizontal  >
                     <Card >
                         {/**必填项 start */}
                         <div className="content_layout">

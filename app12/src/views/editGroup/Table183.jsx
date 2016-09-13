@@ -16,10 +16,14 @@ class Table183 extends BaseTableComp{
             return <tr key ={index}  onClick ={this.handleClickTr.bind(this,item.id)} 
                 className = {this.state.selectedId === item.id ? "selected_td" : ""}>
                 <td>
-                    <Input name ={'t18301'+index} className="required"/> 
+                    <Input name ={'t18301'+index} value= {item.name1}
+                     onChange={this.updateSubTableFieldValue.bind(this,'name1')}
+                     className="required"/> 
                 </td>
                 <td>
-                    <Input type ="text"/>
+                    <Input type ="text"
+                     onChange={this.updateSubTableFieldValue.bind(this,'name1')}
+                     value ={item.name2}/>
                 </td>
             </tr>
         }) ;
