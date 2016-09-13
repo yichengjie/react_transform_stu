@@ -3,7 +3,7 @@ import {UPDATE_SUBTABLE_FIELDVALUE,
 
 
 let initSate = {
-  list183:[]
+  list183:[{id:'001',name1:'点击添加测试',name2:"xx"}]
 } ;
 
 function addLine(param,state){
