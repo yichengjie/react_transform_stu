@@ -29,6 +29,7 @@ class MainContent extends Component{
         this.handleSubmit = this.handleSubmit.bind(this) ;
         this.initPageValue = this.initPageValue.bind(this) ;
         this.checkSaleEndDate = this.checkSaleEndDate.bind(this) ;
+        this.checkSaleStartDate = this.checkSaleStartDate.bind(this) ;
         NProgress.configure({ parent: '.container' });
     }
     //提交表单
@@ -95,20 +96,26 @@ class MainContent extends Component{
         }
     }
 
-    checkSaleEndDate(rule, value, callback){
+    checkSaleStartDate(rule, value, callback){
          if (!value) {
             callback();
         } else {
             let saleStartDate = this.props.form.getFieldValue('saleStartDate') ;
             let saleEndDate = this.props.form.getFieldValue('saleEndDate') ;
-            console.info('value : ' ,value) ;
-            console.info('saleStartDate : ' ,saleStartDate) ;
-            console.info('saleEndDate : ' ,saleEndDate) ;
             if(saleStartDate>saleEndDate){
                 callback('结束日期必须大于起始日期');
             }else{
                 callback();
             }
+        }
+    }
+
+    checkSaleEndDate(rule, value, callback){
+        const form = this.props.form;
+         if (!value) {
+            callback();
+        } else {
+            form.validateFields(['saleStartDate'], { force: true });
         }
     }
 
@@ -132,6 +139,7 @@ class MainContent extends Component{
             initialValue:'',
             rules: [
                 { required: true },
+                {validator:this.checkSaleStartDate}
             ],
         }) ;
         let saleEndDateField = getFieldProps('saleEndDate',{
@@ -172,7 +180,7 @@ class MainContent extends Component{
 
                                  <FormItem {...formItemLayout} label="销售日期"
                                     //help={  [...(getFieldError('saleStartDate') || []),...(getFieldError('saleEndDate') || [])] .join(', ') }
-                                    help={  (getFieldError('saleEndDate') || []).join(', ') }
+                                    help={  (getFieldError('saleStartDate') || []).join(', ') }
                                   >
                                     <DatePicker {...saleStartDateField} style={{width:"49%"}}/>
                                     <span className="two_input_blank"></span>
