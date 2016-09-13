@@ -151,6 +151,11 @@ class MainContent extends Component{
     }
 
     checkLoc1Type(rule, value, callback){
+        this.props.form.validateFields(['loc1Value'], { force: true });
+        callback();
+    }
+
+    checkLoc1Value(rule, value, callback){
         let locType = this.props.form.getFieldValue('loc1Type') ;
         let locValue = this.props.form.getFieldValue('loc1Value') ;
         let {flag,msg} = CommonUtil.checkGeoLocl(locValue,locType) ;
@@ -161,13 +166,13 @@ class MainContent extends Component{
         }
     }
 
-    checkLoc1Value(rule, value, callback){
+    checkLoc2Type(rule, value, callback){
         const form = this.props.form;
-        form.validateFields(['loc1Type'], { force: true });
+        form.validateFields(['loc2Value'], { force: true });
         callback(); 
     }
 
-    checkLoc2Type(rule, value, callback){
+    checkLoc2Value(rule, value, callback){
         let locType = this.props.form.getFieldValue('loc2Type') ;
         let locValue = this.props.form.getFieldValue('loc2Value') ;
         let {flag,msg} = CommonUtil.checkGeoLocl(locValue,locType) ;
@@ -176,12 +181,6 @@ class MainContent extends Component{
         }else{
             callback();
         }
-    }
-
-    checkLoc2Value(rule, value, callback){
-        const form = this.props.form;
-        form.validateFields(['loc2Type'], { force: true });
-        callback(); 
     }
 
 
@@ -289,21 +288,40 @@ class MainContent extends Component{
                                     
                                 </FormItem>
 
-                                 <FormItem {...formItemLayout}  label="区域1" 
-                                    help={  (getFieldError('loc1Type') || []).join(', ') }>
-                                    <Select {...loc1TypeField} placeholder="Please select a country" style={{ width: '49%' }}>
-                                       {geoOptions}
-                                    </Select>
-                                    <span className="two_input_blank"></span>
-                                    <Input {...loc1ValueField} style={{width:"49%"}}/>
+                                 <FormItem {...formItemLayout}  label="区域1">
+                                    <Col span="11">
+                                        <FormItem>
+                                           <Select {...loc1TypeField} placeholder="Please select a country">
+                                                {geoOptions}
+                                            </Select>
+                                        </FormItem>
+                                    </Col>
+                                    <Col span="2">
+                                        <p className="ant-form-split">-</p>
+                                    </Col>
+                                    <Col span="11">
+                                        <FormItem>
+                                            <Input {...loc1ValueField} />
+                                        </FormItem>
+                                    </Col>
                                 </FormItem>
 
                                 <FormItem {...formItemLayout} label="区域2" >
-                                    <Select {...loc2TypeField} placeholder="Please select a country" style={{ width: '49%' }}>
-                                        {geoOptions}
-                                    </Select>
-                                    <span className="two_input_blank"></span>
-                                    <Input {...loc2ValueField} style={{width:"49%"}}/>
+                                    <Col span="11">
+                                        <FormItem>
+                                            <Select {...loc2TypeField} placeholder="Please select a country">
+                                                {geoOptions}
+                                            </Select>
+                                        </FormItem>
+                                    </Col>
+                                    <Col span="2">
+                                        <p className="ant-form-split">-</p>
+                                    </Col>
+                                    <Col span="11">
+                                        <FormItem>
+                                           <Input {...loc2ValueField} />
+                                        </FormItem>
+                                    </Col>
                                 </FormItem>
 
                                 <FormItem {...formItemLayout}  label="区域限制">
@@ -317,11 +335,20 @@ class MainContent extends Component{
                         <div className="content_layout">
                             <span className="left">选填项</span>
                             <div className="right">
-                                
                                 <FormItem {...formItemLayout}  label="旅行日期" >
-                                    <DatePicker {...travelStartDateField} style={{width:"49%"}}/>
-                                    <span className="two_input_blank"></span>
-                                    <DatePicker {...travelEndDateField} style={{width:"49%"}}/>
+                                    <Col span="11">
+                                        <FormItem>
+                                            <DatePicker {...travelStartDateField} style={{width:"100%"}}/>
+                                        </FormItem>
+                                    </Col>
+                                    <Col span="2">
+                                        <p className="ant-form-split">-</p>
+                                    </Col>
+                                   <Col span="11">
+                                        <FormItem>
+                                            <DatePicker {...travelEndDateField} style={{width:"100%"}} />
+                                        </FormItem>
+                                    </Col>
                                 </FormItem>
                                 
                                 <Row>
