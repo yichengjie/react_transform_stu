@@ -7,6 +7,8 @@ import PubSub from 'pubsub-js' ;
 import {initBrandGroupPage} from 'src/api/api01.js' ;
 import NProgress from 'nprogress' ;
 import CommonUtil  from 'src/util/CommonUtil.js' ;
+import moment from 'moment' ;
+const dateFormatStr = "YYYY/MM/DD" ; 
 
 
 const Option = Select.Option;
@@ -41,6 +43,10 @@ class MainContent extends Component{
         notification.config({
             top: 100
         });
+    }
+    getTodayDate(){
+       let dateStr = moment().format(dateFormatStr) ;
+       return new Date(dateStr) ;
     }
     //提交表单
     handleSubmit(msg,data) {
@@ -119,7 +125,7 @@ class MainContent extends Component{
             callback();
         } else {
             const form = this.props.form;
-            let now = new Date() ;
+            let now = this.getTodayDate() ;
             if(value<now){
                 callback([new Error('起始日期必须大于当前日期')]);
             }else{
@@ -135,7 +141,7 @@ class MainContent extends Component{
            callback(); 
         }else{
             const form = this.props.form;
-            let now = new Date() ;
+            let now = this.getTodayDate() ;
             if(value<now){
                  callback([new Error('结束日期必须大于当前日期')]);
             }else{
@@ -189,7 +195,7 @@ class MainContent extends Component{
             callback();
         } else {
             const form = this.props.form;
-            let now = new Date() ;
+            let now = this.getTodayDate() ;
             if(value<now){
                 callback([new Error('起始日期必须大于当前日期')]);
             }else{
@@ -205,7 +211,7 @@ class MainContent extends Component{
            callback(); 
         }else{
             const form = this.props.form;
-            let now = new Date() ;
+            let now = this.getTodayDate() ;
             if(value<now){
                  callback([new Error('结束日期必须大于当前日期')]);
             }else{
