@@ -1,0 +1,120 @@
+.brand_group .panel-body{
+    padding: 0;
+}
+.brand_group{
+    margin-bottom: 10px;
+}
+.brand_title{
+    position: relative;
+    font-size: 12px;
+   /* height: 25px;*/
+    line-height: 25px;
+}
+.brand_title:after{
+    display: table;
+    content: '';
+    clear: both;
+}
+/**/
+.brand_title .left {
+    display: block;
+    float: left;
+    width: 210px;
+    padding-right: 10px;
+}
+
+
+.brand_title .left:after{
+    display: table;
+    content: '';
+    clear: both;
+}
+
+
+.brand_title .changeDownUpArrow{
+    display: inline-block;
+    width: 160px;
+    cursor: pointer;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.brand_title .right {
+    display: block;
+    float: right;
+    width: 120px;
+    text-align: right;
+}
+
+.brand_title .center {
+    display: block;
+    margin-left: 210px;
+    margin-right: 120px;
+    width: auto;
+    text-align: left;
+    border-left: 1px solid #E7E7E7;
+    padding-left: 10px;
+  /*  outline: 1px solid red;*/
+}
+.brand_title .left input[type=checkbox]{
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    margin-top: -2px;
+}
+
+
+.brand_img{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    margin: 15px 40px 15px 10px;
+    vertical-align: middle;
+}
+
+.brand_img_ca{
+    background: url("./imgs/products/CA.jpg");
+}
+.brand_img_cz{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background: url("./imgs/products/CZ.jpg");
+}
+
+.brand_list{
+    display: block;
+    height: 80px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    margin: 10px 10px 10px 150px;
+    /*margin: 10px 0px;*/
+}
+.brand_list:not(:last-child){
+    border-bottom: 1px dotted #336699;
+}
+
+.brand_list .item1{
+    display: inline-block;
+    width: 30px;
+    height: 80px;
+    line-height: 80px;
+    font-weight: 700;
+}
+.brand_list .brand_name{
+    font-weight: 700;
+    color: #990000;
+    font-size: 14px;
+}
+/*.brand_list .oper_btn{
+    display: inline-block ;
+    width: 22px;
+    height: 22px ;
+    line-height: 1;
+}*/
+.brand_list  p{
+    height: 25px ;
+    line-height: 1;
+}

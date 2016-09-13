@@ -1,0 +1,54 @@
+/**查询条件相关 start*/
+.query_section{
+    padding: 5px 0;
+    width: 100%;
+    background-color: #00b3ee;
+    background:#F1F2F5 ;
+    border-bottom:1px solid #9ea7ab;
+    box-shadow:0 0 2px 0;
+    font-weight: 100;
+    box-sizing: border-box;
+}
+.query_title{
+    margin: 0 10px;
+    color: #017ebc;
+}
+.query_row{
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    vertical-align: middle;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.query_row:after{
+    clear: both;
+    display: table;
+    content: '';
+}
+.query_row:not(:last-child){
+    margin-bottom: 3px;
+}
+.query_row input[type=text],.query_row select{
+    margin-top: 0px;
+    vertical-align: middle;
+    width: 120px;
+}
+.query_row input[type=checkbox]{
+    margin-top: 0px;
+    vertical-align: middle;
+}
+.query_row select{
+    padding-top: 1px;
+}
+
+.query_row label{
+    margin: 0 5px;
+    font-weight: 100;
+}
+
+.query_row button:not(:last-child){
+    margin-right: 5px;
+}
+
+/**查询条件相关 end*/
