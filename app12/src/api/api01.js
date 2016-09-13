@@ -11,7 +11,8 @@ export function initBrandGroupPage (){
             loc2Value:"",
             geoLimit:['Apple'],
             travelStartDate:new Date("2016/09/06"),
-            travelEndDate:new Date("2016/09/07")
+            travelEndDate:new Date("2016/09/07"),
+            descr:'hello world'
         } ;
         setTimeout(function(){
             resolve(data);

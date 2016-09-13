@@ -85,11 +85,11 @@ class MainContent extends Component{
             //console.info('retData : ' ,retData) ;
             let {sequenceNum,brandGroupName,saleStartDate,saleEndDate,
                 loc1Type,loc1Value,loc2Type,loc2Value,geoLimit,travelStartDate,
-                travelEndDate} = retData ;
+                travelEndDate,descr} = retData ;
             _self.props.form.setFieldsValue({
                sequenceNum,brandGroupName,saleStartDate,saleEndDate,
                 loc1Type,loc1Value,loc2Type,loc2Value,geoLimit,travelStartDate,
-                travelEndDate
+                travelEndDate,descr
             });
         },function(err){
             console.info('err : ',err) ;
@@ -299,6 +299,9 @@ class MainContent extends Component{
                 {validator:this.checkTravelEndDate.bind(this)}
             ]
         }) ;
+        let descrField = getFieldProps('descr',{
+            initialValue:''
+        })
         //区域下拉框
         const geoOptions = geoList.map((opt) => <Option key={opt.value} value ={opt.value}>{opt.name}</Option>);
 
@@ -412,7 +415,7 @@ class MainContent extends Component{
                                 </Row>
 
                                 <FormItem {...formItemLayout} label="描述" >
-                                    <Input type="textarea" rows={4} />
+                                    <Input type="textarea" {...descrField} rows={4} />
                                 </FormItem>
 
                             </div>
