@@ -140,8 +140,8 @@ class MainContent extends Component{
                  callback([new Error('结束日期必须大于当前日期')]);
             }else{
                 //截止日期必须大于起始日期的判断
-                let saleStartDate = this.props.form.getFieldValue('saleStartDate') ;
-                if(saleStartDate>value){
+                let startDate = this.props.form.getFieldValue('saleStartDate') ;
+                if(startDate>value){
                     callback([new Error('结束日期必须大于起始日期')]);
                 }else{//如果校验通过，则触发起始日期的校验
                     callback();
@@ -180,6 +180,43 @@ class MainContent extends Component{
             callback(msg);
         }else{
             callback();
+        }
+    }
+
+
+    checkTravelStartDate(rule, value, callback){
+        if (!value) {
+            callback();
+        } else {
+            const form = this.props.form;
+            let now = new Date() ;
+            if(value<now){
+                callback([new Error('起始日期必须大于当前日期')]);
+            }else{
+                //强制结束日期校验travelStartDate
+                form.validateFields(['travelEndDate'], { force: true });
+                callback();
+            }
+        }
+    }
+
+    checkTravelEndDate(rule, value, callback){
+        if(!value){
+           callback(); 
+        }else{
+            const form = this.props.form;
+            let now = new Date() ;
+            if(value<now){
+                 callback([new Error('结束日期必须大于当前日期')]);
+            }else{
+                //截止日期必须大于起始日期的判断
+                let startDate = this.props.form.getFieldValue('travelStartDate') ;
+                if(startDate>value){
+                    callback([new Error('结束日期必须大于起始日期')]);
+                }else{//如果校验通过，则触发起始日期的校验
+                    callback();
+                }
+            }
         }
     }
 
@@ -246,8 +283,16 @@ class MainContent extends Component{
         let geoLimitField = getFieldProps('geoLimit',{
             initialValue:['Pear','Orange']
         }) ;
-        let travelStartDateField = getFieldProps('travelStartDate') ;
-        let travelEndDateField = getFieldProps('travelEndDate') ;
+        let travelStartDateField = getFieldProps('travelStartDate',{
+            rules:[
+                {validator:this.checkTravelStartDate.bind(this)}
+            ]
+        }) ;
+        let travelEndDateField = getFieldProps('travelEndDate',{
+            rules:[
+                {validator:this.checkTravelEndDate.bind(this)}
+            ]
+        }) ;
         //区域下拉框
         const geoOptions = geoList.map((opt) => <Option key={opt.value} value ={opt.value}>{opt.name}</Option>);
 
