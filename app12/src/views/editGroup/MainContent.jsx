@@ -115,31 +115,39 @@ class MainContent extends Component{
     }
 
     checkSaleStartDate(rule, value, callback){
-         if (!value) {
+        if (!value) {
             callback();
         } else {
+            const form = this.props.form;
             let now = new Date() ;
-            let saleStartDate = this.props.form.getFieldValue('saleStartDate') ;
-            if(saleStartDate<now){
+            if(value<now){
                 callback([new Error('起始日期必须大于当前日期')]);
             }else{
-                let saleEndDate = this.props.form.getFieldValue('saleEndDate') ;
-                if(saleStartDate>saleEndDate){
-                    callback([new Error('结束日期必须大于起始日期')]);
-                }else{
-                    callback();
-                }
+                //强制结束日期校验
+                form.validateFields(['saleEndDate'], { force: true });
+                callback();
             }
         }
     }
 
     checkSaleEndDate(rule, value, callback){
-        const form = this.props.form;
-        if (value) {
-           form.validateFields(['saleStartDate'], { force: true });
-        } 
-        //这个地方callback一定要调用，不然会一直处理验证中
-        callback();
+        if(!value){
+           callback(); 
+        }else{
+            const form = this.props.form;
+            let now = new Date() ;
+            if(value<now){
+                 callback([new Error('结束日期必须大于当前日期')]);
+            }else{
+                //截止日期必须大于起始日期的判断
+                let saleStartDate = this.props.form.getFieldValue('saleStartDate') ;
+                if(saleStartDate>value){
+                    callback([new Error('结束日期必须大于起始日期')]);
+                }else{//如果校验通过，则触发起始日期的校验
+                    callback();
+                }
+            }
+        }
     }
 
     checkLoc1Type(rule, value, callback){
@@ -264,11 +272,21 @@ class MainContent extends Component{
                                     <Input  {...brandGroupNameField} />
                                 </FormItem>
 
-                                 <FormItem {...formItemLayout} label="销售日期"
-                                    help={  (getFieldError('saleStartDate') || []).join(', ') }>
-                                    <DatePicker {...saleStartDateField} style={{width:"49%"}}/>
-                                    <span className="two_input_blank"></span>
-                                    <DatePicker {...saleEndDateField} style={{width:"49%"}} />
+                                 <FormItem {...formItemLayout} label="销售日期">
+                                    <Col span="11">
+                                        <FormItem>
+                                            <DatePicker {...saleStartDateField} style={{width:"100%"}} />
+                                        </FormItem>
+                                    </Col>
+                                    <Col span="2">
+                                        <p className="ant-form-split">-</p>
+                                    </Col>
+                                    <Col span="11">
+                                        <FormItem>
+                                            <DatePicker {...saleEndDateField} style={{width:"100%"}} />
+                                        </FormItem>
+                                    </Col>
+                                    
                                 </FormItem>
 
                                  <FormItem {...formItemLayout}  label="区域1" 
