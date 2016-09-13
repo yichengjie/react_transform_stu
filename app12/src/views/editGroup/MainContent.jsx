@@ -118,12 +118,17 @@ class MainContent extends Component{
          if (!value) {
             callback();
         } else {
+            let now = new Date() ;
             let saleStartDate = this.props.form.getFieldValue('saleStartDate') ;
-            let saleEndDate = this.props.form.getFieldValue('saleEndDate') ;
-            if(saleStartDate>saleEndDate){
-                callback([new Error('结束日期必须大于起始日期')]);
+            if(saleStartDate<now){
+                callback([new Error('起始日期必须大于当前日期')]);
             }else{
-                callback();
+                let saleEndDate = this.props.form.getFieldValue('saleEndDate') ;
+                if(saleStartDate>saleEndDate){
+                    callback([new Error('结束日期必须大于起始日期')]);
+                }else{
+                    callback();
+                }
             }
         }
     }
