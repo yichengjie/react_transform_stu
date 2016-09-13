@@ -19,11 +19,17 @@ class TableFooterComp extends Component {
     return (
       <div className="table_footer">
           <Button type="button" size="small"
+           type="primary" >保存</Button>
+           <span className="marginR5"></span>
+          <Button type="button" size="small"
             onClick = {this.addTableLine.bind(this)}
-            type="primary" >增加一行</Button>
+             >增加一行</Button>
+          <span className="marginR5"></span>
           <Button type="button" size="small"
             onClick = {this.deleteTableLine.bind(this)}
             >删除一行</Button>
+          
+          
       </div>
     ) ;
   }
