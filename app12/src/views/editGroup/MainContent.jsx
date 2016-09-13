@@ -43,6 +43,9 @@ class MainContent extends Component{
         notification.config({
             top: 100
         });
+        this.state = {
+            list183:[1,2,3]
+        } ;
     }
     getTodayDate(){
        let dateStr = moment().format(dateFormatStr) ;
@@ -410,7 +413,7 @@ class MainContent extends Component{
                                         <label> 发布</label>
                                     </Col>
                                     <Col span={12} >
-                                         <Table183 tbname ="list183" list = {[1,2,3]}/>
+                                         <Table183 tbname ="list183" />
                                     </Col>
                                 </Row>
 
