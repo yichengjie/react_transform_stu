@@ -416,6 +416,7 @@ class MainContent extends Component{
                                          <Table183 tbname ="list183" />
                                     </Col>
                                 </Row>
+                                <br/>
 
                                 <FormItem {...formItemLayout} label="描述" >
                                     <Input type="textarea" {...descrField} rows={4} />
