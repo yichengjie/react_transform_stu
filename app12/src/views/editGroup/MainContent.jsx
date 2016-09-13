@@ -6,6 +6,7 @@ import {SUBMITFROM_EVENT_EDITGROUP,RESETFROM_EVENT_EDITGROUP} from 'src/constant
 import PubSub from 'pubsub-js' ;
 import {initBrandGroupPage} from 'src/api/api01.js' ;
 import NProgress from 'nprogress' ;
+import CommonUtil  from 'src/util/CommonUtil.js' ;
 
 
 const Option = Select.Option;
@@ -27,6 +28,7 @@ class MainContent extends Component{
         super(props) ;
         this.handleSubmit = this.handleSubmit.bind(this) ;
         this.initPageValue = this.initPageValue.bind(this) ;
+        this.checkSaleEndDate = this.checkSaleEndDate.bind(this) ;
         NProgress.configure({ parent: '.container' });
     }
     //提交表单
@@ -97,6 +99,11 @@ class MainContent extends Component{
          if (!value) {
             callback();
         } else {
+            let saleStartDate = this.props.form.getFieldValue('saleStartDate') ;
+            let saleEndDate = this.props.form.getFieldValue('saleEndDate') ;
+            console.info('saleStartDate : ' ,saleStartDate) ;
+            console.info('saleEndDate : ' ,saleEndDate) ;
+
              callback([new Error('结束日期必须大于起始日期')]);
         }
     }
