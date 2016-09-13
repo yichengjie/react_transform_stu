@@ -38,14 +38,25 @@ class MainContent extends Component{
         this.handleChangeLocType = this.handleChangeLocType.bind(this) ;
         this.checkLoc1Type = this.checkLoc1Type.bind(this) ;
         NProgress.configure({ parent: '.container' });
+        notification.config({
+            top: 100
+        });
     }
     //提交表单
     handleSubmit(msg,data) {
         this.props.form.validateFields((errors, values) => {
             if (!!errors) {
                 console.log('Errors in form!!!');
+                notification.error({
+                    message: '这是标题',
+                    description: '验证不通过，请更正表单数据后重新提交'
+                }) ;
                 return;
             }
+            notification.success({
+                message: '这是标题',
+                description: '验证通过，保存数据到数据库'
+            }) ;
             console.log('Submit!!!');
             console.log(values);
         });
@@ -96,7 +107,7 @@ class MainContent extends Component{
                     } else {
                         callback();
                     }
-                },1000) ;
+                },100) ;
             }else{
                 callback([new Error('请输入数字。')]);
             }
