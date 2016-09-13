@@ -47,14 +47,14 @@ class MainContent extends Component{
         this.props.form.validateFields((errors, values) => {
             if (!!errors) {
                 console.log('Errors in form!!!');
-                notification.error({
-                    message: '这是标题',
-                    description: '验证不通过，请更正表单数据后重新提交'
-                }) ;
+                // notification.error({
+                //     message: '失败',
+                //     description: '验证不通过，请更正表单数据后重新提交'
+                // }) ;
                 return;
             }
             notification.success({
-                message: '这是标题',
+                message: '成功',
                 description: '验证通过，保存数据到数据库'
             }) ;
             console.log('Submit!!!');
