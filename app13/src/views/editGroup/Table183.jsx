@@ -23,6 +23,16 @@ class Table183 extends BaseTableComp{
         return {"name1":'yicj',"name2":'2'}
     }
 
+    updateInputState(id){
+       let retArr = this.props.list.filter(function(item){
+            if(item.id == id){
+                return true ;
+            }
+        }) ;
+        let {name1,name2} = retArr[0] ;
+        this.setState({name1, name2,}) ;   
+    }
+
     clearStateInputState(){
         this.setState({
             name1:'',
@@ -43,14 +53,14 @@ class Table183 extends BaseTableComp{
             return <tr key ={index}  onClick ={this.handleClickTr.bind(this,item.id)} 
                 className = {selectedFlag ? "selected_td" : ""}>
                 <td>
-                    {selectedFlag ? <Input  value= {this.state.name1||item.name1}
+                    {selectedFlag ? <Input  value= {this.state.name1}
                      onChange={this.handleChangeInput.bind(this,'name1')}/> :item.name1}
                 </td>
                 <td>
                     {
                      selectedFlag ?<Input type ="text"
                      onChange={this.handleChangeInput.bind(this,'name2')}
-                     value ={this.state.name2 ||item.name2}/> : item.name2
+                     value ={this.state.name2}/> : item.name2
                     }
                     
                 </td>

@@ -22,23 +22,31 @@ class BaseTableComp extends Component{
     handleClickTr(id){
         let oldId = this.state.selectedId ;
         let _self = this ;
-        if(oldId&&oldId.length>0&&id!==oldId&&this.state.dirty){
-            Modal.confirm({
-                title: '确认提示',
-                content: '放弃编辑的内容么，不保存?',
-                okText: '确定',
-                cancelText: '取消',
-                onOk() {
-                   _self.clearStateInputState() ;
-                   _self.updateSelectId(id) ;
-                },
-                onCancel() {},
-            });
-        }else{
-             _self.updateSelectId(id) ;
+        if(oldId&&oldId.length>0){//如果旧的id存在
+            if(id!==oldId){
+                if(this.state.dirty){//修改过
+                    Modal.confirm({
+                        title: '确认提示',
+                        content: '放弃编辑的内容么，不保存?',
+                        okText: '确定',
+                        cancelText: '取消',
+                        onOk() {
+                            _self.clearStateInputState() ;
+                            _self.updateSelectId(id) ;
+                            _self.updateInputState(id) ;
+                        },
+                        onCancel() {},
+                    });
+                }else{
+                    _self.updateSelectId(id) ;
+                    _self.updateInputState(id) ;
+                }
+            }
+        }else{//旧的id不存在
+            _self.updateSelectId(id) ;
+            _self.updateInputState(id) ;
         }
     }
-
 
     updateSelectId(id){
         if(id&&id.length>0){
