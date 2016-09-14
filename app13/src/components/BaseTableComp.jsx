@@ -13,6 +13,7 @@ class BaseTableComp extends Component{
         this.renderThead = this.renderThead.bind(this) ;
         this.clearSelectedId = this.clearSelectedId.bind(this) ;
         this.updateSubTableFieldValue = this.updateSubTableFieldValue.bind(this) ;
+        this.saveTableData = this.saveTableData.bind(this) ;
     }
     clearSelectedId(){
         this.setState({selectedId:""}) ;
@@ -30,6 +31,9 @@ class BaseTableComp extends Component{
         let value = event.target.value ;
         let obj = {tbname,id,name,value} ;
         this.props.updateSubTableFieldValue(obj) ;
+    }
+    saveTableData(){
+        this.clearSelectedId() ;
     }
     render(){
         return (
@@ -49,6 +53,7 @@ class BaseTableComp extends Component{
                 addTableLine = {this.props.addTbLine} 
                 deleteTableLine={this.props.deleteTbLine}
                 clearSelectedId={this.clearSelectedId}
+                saveTableData={this.saveTableData}
             />
         </div>
         ) ;
