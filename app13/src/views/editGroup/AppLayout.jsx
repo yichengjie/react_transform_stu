@@ -10,7 +10,7 @@ import BackTopComp from 'src/components/BackTopComp.jsx' ;
 import QuerySection from './QuerySection.jsx' ;
 import MainContent from './MainContent.jsx' ;
 import NProgress from 'nprogress' ;
-import 'src/lib/jq-validate/index.js';
+//import 'src/lib/jq-validate/index.js';
 
 class AppLayout extends Component {
     constructor(props){

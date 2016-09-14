@@ -53,8 +53,8 @@ class MainContent extends Component{
     }
     //提交表单
     handleSubmit(msg,data) {
-        let jqFlag = this.jq_validator.form() ;
-        console.info('jqFlag : ' + jqFlag) ;
+        //let jqFlag = this.jq_validator.form() ;
+        //console.info('jqFlag : ' + jqFlag) ;
         this.props.form.validateFields((errors, values) => {
             if (!!errors) {
                 console.log('Errors in form!!!');
@@ -75,8 +75,8 @@ class MainContent extends Component{
         this.token = token ;
         NProgress.start();
         this.initPageValue() ;
-        var validator = $("#myForm").validate({meta:""});
-        this.jq_validator = validator ;
+        //var validator = $("#myForm").validate({meta:""});
+        //this.jq_validator = validator ;
     }
 
     //初始化页面
