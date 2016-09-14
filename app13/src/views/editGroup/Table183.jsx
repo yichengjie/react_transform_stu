@@ -7,7 +7,16 @@ import {addTbLine,deleteTbLine,updateSubTableFieldValue} from 'src/actions/actio
 class Table183 extends BaseTableComp{
     constructor(props){
         super(props) ;
+        this.state = {
+            name1:'',
+            name2:''
+        } ;
     }
+
+    handleChangeInput(name,event){
+        this.setState({[name]:event.target.value}) ;
+    }
+
     getSubTableObj (){
         return {"name1":'yicj',"name2":'2'}
     }
@@ -18,16 +27,14 @@ class Table183 extends BaseTableComp{
             return <tr key ={index}  onClick ={this.handleClickTr.bind(this,item.id)} 
                 className = {selectedFlag ? "selected_td" : ""}>
                 <td>
-                    {selectedFlag ? <Input name ={'t18301'+index} value= {item.name1}
-                     onChange={this.updateSubTableFieldValue.bind(this,'name1')}
-                     className="required"/> :item.name1}
-                    
+                    {selectedFlag ? <Input  value= {this.state.name1}
+                     onChange={this.handleChangeInput.bind(this,'name1')}/> :item.name1}
                 </td>
                 <td>
                     {
                      selectedFlag ?<Input type ="text"
-                     onChange={this.updateSubTableFieldValue.bind(this,'name2')}
-                     value ={item.name2}/> : item.name2
+                     onChange={this.handleChangeInput.bind(this,'name2')}
+                     value ={this.state.name2}/> : item.name2
                     }
                     
                 </td>
