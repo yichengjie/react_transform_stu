@@ -1,5 +1,5 @@
 import {UPDATE_SUBTABLE_FIELDVALUE,
-  ADD_TBLINE,DELETE_TBLINE} from '../constants/constant.js' ;
+  ADD_TBLINE,DELETE_TBLINE,SAVE_SUBTABLE_INPUTDATA} from '../constants/constant.js' ;
 
 
 let initSate = {
@@ -28,6 +28,17 @@ function deleteLine(param,state){
    return Object.assign({},state,{[tbname]:newList}) ;
 }
 
+function saveSubTableInputData(param,state){
+  let {tbname,id,...tail} = param ;
+    let newList = state[tbname].map((item) => {
+      if(item.id === id){
+        return Object.assign({},item,tail) ;
+      }
+      return item ;
+    }) ;
+    return Object.assign({},state,{[tbname]:newList}) ;
+}
+
 function updateInputValue(param,state){
     let {tbname,id,name,value} = param ;
     let newList = state[tbname].map((item) => {
@@ -48,6 +59,8 @@ const listSubTable = (state=initSate,action) =>{
     }
     case UPDATE_SUBTABLE_FIELDVALUE:
       return updateInputValue(action.param,state) ;
+    case SAVE_SUBTABLE_INPUTDATA :
+      return saveSubTableInputData(action.param,state) ;
     default:
       return state ;
   }

@@ -2,23 +2,39 @@ import React,{Component} from 'react' ;
 import {Input} from 'antd' ;
 import BaseTableComp from 'src/components/BaseTableComp.jsx' ;
 import {connect} from 'react-redux';
-import {addTbLine,deleteTbLine,updateSubTableFieldValue} from 'src/actions/action.js' ;
+import {addTbLine,deleteTbLine,saveSubTableInputData} from 'src/actions/action.js' ;
 
 class Table183 extends BaseTableComp{
     constructor(props){
         super(props) ;
         this.state = {
+            selectedId:'',
             name1:'',
-            name2:''
+            name2:'',
+            dirty:false
         } ;
     }
 
     handleChangeInput(name,event){
-        this.setState({[name]:event.target.value}) ;
+        this.setState({[name]:event.target.value,dirty:true}) ;
     }
 
     getSubTableObj (){
         return {"name1":'yicj',"name2":'2'}
+    }
+
+    clearStateInputState(){
+        this.setState({
+            name1:'',
+            name2:'',
+            dirty:false
+        }) ;
+    }
+    //保存输入项类容
+    saveInputData(){
+        let tbname = "list183" ;
+        let param = {tbname,id:this.state.selectedId,name1:this.state.name1,name2:this.state.name2} ;
+        this.props.saveSubTableInputData(param) ;
     }
 
     renderTbody(list){
@@ -27,14 +43,14 @@ class Table183 extends BaseTableComp{
             return <tr key ={index}  onClick ={this.handleClickTr.bind(this,item.id)} 
                 className = {selectedFlag ? "selected_td" : ""}>
                 <td>
-                    {selectedFlag ? <Input  value= {this.state.name1}
+                    {selectedFlag ? <Input  value= {this.state.name1||item.name1}
                      onChange={this.handleChangeInput.bind(this,'name1')}/> :item.name1}
                 </td>
                 <td>
                     {
                      selectedFlag ?<Input type ="text"
                      onChange={this.handleChangeInput.bind(this,'name2')}
-                     value ={this.state.name2}/> : item.name2
+                     value ={this.state.name2 ||item.name2}/> : item.name2
                     }
                     
                 </td>
@@ -62,7 +78,7 @@ function mapDispatch2Props(dispatch,ownProp){
     return {
       addTbLine:(param)=>dispatch(addTbLine(param)) ,
       deleteTbLine:(param)=>dispatch(deleteTbLine(param)),
-      updateSubTableFieldValue:(param)=>dispatch(updateSubTableFieldValue(param))
+      saveSubTableInputData:(param)=>dispatch(saveSubTableInputData(param))
     } ;
 }
 export default connect(

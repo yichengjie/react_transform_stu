@@ -1,5 +1,5 @@
 import {UPDATE_FIELDVALUE,FETCH_FIELDS_UPDATE,
-  UPDATE_SUBTABLE_FIELDVALUE,ADD_TBLINE,DELETE_TBLINE} from '../constants/constant.js' ;
+  UPDATE_SUBTABLE_FIELDVALUE,ADD_TBLINE,DELETE_TBLINE,SAVE_SUBTABLE_INPUTDATA} from '../constants/constant.js' ;
 
 export function updateFieldValue(param){
     return {type:UPDATE_FIELDVALUE,param} ;
@@ -11,6 +11,10 @@ export function fetchFieldsUpdate(param){
 
 export function updateSubTableFieldValue(param){
   return {type:UPDATE_SUBTABLE_FIELDVALUE,param} ;
+}
+
+export function saveSubTableInputData(param){
+  return {type:SAVE_SUBTABLE_INPUTDATA,param} ;
 }
 
 /////////////////////table196 start///////////////////////////////////

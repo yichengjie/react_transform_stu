@@ -17,18 +17,19 @@ class BaseTableComp extends Component{
         this.updateSelectId = this.updateSelectId.bind(this) ;
     }
     clearSelectedId(){
-        this.setState({selectedId:""}) ;
+        this.setState({selectedId:"",dirty:false}) ;
     }
     handleClickTr(id){
         let oldId = this.state.selectedId ;
         let _self = this ;
-        if(oldId&&oldId.length>0&&id!==oldId){
+        if(oldId&&oldId.length>0&&id!==oldId&&this.state.dirty){
             Modal.confirm({
                 title: '确认提示',
                 content: '放弃编辑的内容么，不保存?',
                 okText: '确定',
                 cancelText: '取消',
                 onOk() {
+                   _self.clearStateInputState() ;
                    _self.updateSelectId(id) ;
                 },
                 onCancel() {},
@@ -41,9 +42,9 @@ class BaseTableComp extends Component{
 
     updateSelectId(id){
         if(id&&id.length>0){
-            this.setState({selectedId:id}) ;
+            this.setState({selectedId:id,dirty:false}) ;
         }else{
-            this.setState({selectedId:""}) ; 
+            this.setState({selectedId:"",dirty:false}) ; 
         }
     }
     
@@ -55,7 +56,9 @@ class BaseTableComp extends Component{
         this.props.updateSubTableFieldValue(obj) ;
     }
     saveTableData(){
+        this.saveInputData() ;
         this.clearSelectedId() ;
+        this.clearStateInputState() ;
     }
     render(){
         return (
