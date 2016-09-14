@@ -1,5 +1,5 @@
 import React,{Component} from 'react' ;
-import {Input} from 'antd' ;
+import {Input,Modal} from 'antd' ;
 import TableFooterComp from './TableFooterComp.jsx'; 
 import '../styles/table.css' ;
 
@@ -14,17 +14,39 @@ class BaseTableComp extends Component{
         this.clearSelectedId = this.clearSelectedId.bind(this) ;
         this.updateSubTableFieldValue = this.updateSubTableFieldValue.bind(this) ;
         this.saveTableData = this.saveTableData.bind(this) ;
+        this.updateSelectId = this.updateSelectId.bind(this) ;
     }
     clearSelectedId(){
         this.setState({selectedId:""}) ;
     }
     handleClickTr(id){
+        let oldId = this.state.selectedId ;
+        let _self = this ;
+        if(oldId&&oldId.length>0&&id!==oldId){
+            Modal.confirm({
+                title: '确认提示',
+                content: '放弃编辑的内容么，不保存?',
+                okText: '确定',
+                cancelText: '取消',
+                onOk() {
+                   _self.updateSelectId(id) ;
+                },
+                onCancel() {},
+            });
+        }else{
+             _self.updateSelectId(id) ;
+        }
+    }
+
+
+    updateSelectId(id){
         if(id&&id.length>0){
             this.setState({selectedId:id}) ;
         }else{
             this.setState({selectedId:""}) ; 
         }
     }
+    
     updateSubTableFieldValue(name,event){
         let tbname = this.props.tbname ;
         let id = this.state.selectedId ;
