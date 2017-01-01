@@ -1,6 +1,7 @@
 import React,{Component} from 'react' ;
 import { Checkbox ,Input,Button,DatePicker } from 'antd';
-
+import {handleQueryOper} from './busi/QuerySection.js' ; 
+//import handleQueryOper from './busi/QuerySection.js' ; 
 //const CheckboxGroup = Checkbox.Group;
 var classNames = require('classnames');
 const two_input ={
@@ -19,10 +20,15 @@ export default class IndexLayout extends Component {
         };
         this.showMoreSwitch = this.showMoreSwitch.bind(this) ;
         this.renderMoreQuerySection = this.renderMoreQuerySection.bind(this) ;
+        this.handleQueryOper = this.handleQueryOper.bind(this);
     }
     showMoreSwitch(event){
         let showMoreFlag = event.target.checked ;
         this.setState({showMoreFlag}) ;
+    }
+    handleQueryOper(event){
+        console.info('handleQueryOper .....') ;
+        handleQueryOper() ;
     }
 
     renderMoreQuerySection(){
@@ -60,7 +66,7 @@ export default class IndexLayout extends Component {
                     <span className="marginL10 marginR5"></span>
                     <Checkbox onChange ={this.showMoreSwitch}>更多</Checkbox>
                     <span className="pull-right marginR15">
-                        <Button type="primary" size ="small">查询</Button>
+                        <Button type="primary" size ="small" onClick={this.handleQueryOper}>查询</Button>
                     </span>
                 </div>
                 {this.renderMoreQuerySection()}
