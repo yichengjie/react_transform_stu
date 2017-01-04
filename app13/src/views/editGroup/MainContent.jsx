@@ -357,7 +357,7 @@ class MainContent extends Component{
                                         <p className="ant-form-split">-</p>
                                     </Col>
                                     <Col span="11">
-                                        <FormItem>
+                                        <FormItem hasFeedback>
                                             <Input {...loc1ValueField} />
                                         </FormItem>
                                     </Col>
@@ -375,7 +375,7 @@ class MainContent extends Component{
                                         <p className="ant-form-split">-</p>
                                     </Col>
                                     <Col span="11">
-                                        <FormItem>
+                                        <FormItem hasFeedback>
                                            <Input {...loc2ValueField} />
                                         </FormItem>
                                     </Col>

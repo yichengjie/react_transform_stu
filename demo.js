@@ -9,14 +9,16 @@ function validCommon(flag,validFn){
 }
 
 function validteNotNull(value,str){
+    console.info('value : ' + value) ;
+    console.info('str : ' + str) ;
     if(value==str){
         return true ;
     }
     return false ;
 }
 
-var flag = false ;
-var goodsId = "SKU" ;
+var flag = true ;
+var goodsId = "hello" ;
 flag = validCommon(flag,validteNotNull)(goodsId,'SKU');
 
 console.info(flag) ;
