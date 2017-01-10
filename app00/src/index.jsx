@@ -44,7 +44,7 @@ ReactDOM.render(
       <PopconfirmLocation/>
       <RangePicker/>
       <CustomeDateRange/>
-         * 
+         *
          */
       }
       {
@@ -53,7 +53,7 @@ ReactDOM.render(
          * <ValidateCustomized />
          */
       }
-      <MixForm/>
+      <HelloWorld/>
     </div>
   </div>
   , mountNode);

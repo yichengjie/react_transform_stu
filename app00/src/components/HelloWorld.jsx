@@ -1,8 +1,10 @@
 import React from 'react';
-import 'bootstrap/scss/bootstrap.scss';
+//import 'bootstrap/scss/bootstrap.scss';
+import 'bootstrap/dist/css/bootstrap.css';
 class App extends React.Component{
     constructor() {
         super();
+        console.info('hello world') ;
     }
     render() {
         return (
